@@ -1,0 +1,72 @@
+# items
+
+## ingots
+item.essentialalloys:ingot.copper.name=Copper Ingot
+item.essentialalloys:ingot.tin.name=Tin Ingot
+item.essentialalloys:ingot.bronze.name=Bronze Ingot
+item.essentialalloys:ingot.silver.name=Silver Ingot
+item.essentialalloys:ingot.magic.name=Magic Ingot
+item.essentialalloys:ingot.steel.name=Steel Ingot
+
+## dusts
+item.essentialalloys:dust.iron.name=Iron Dust
+item.essentialalloys:dust.gold.name=Gold Dust
+item.essentialalloys:dust.copper.name=Copper Dust
+item.essentialalloys:dust.tin.name=Tin Dust
+item.essentialalloys:dust.bronze.name=Bronze Dust
+item.essentialalloys:dust.silver.name=Silver Dust
+item.essentialalloys:dust.magic.name=Magic Dust
+
+## tools
+item.essentialalloys:bronze.sword.name=Bronze Sword
+item.essentialalloys:bronze.pickaxe.name=Bronze Pickaxe
+item.essentialalloys:bronze.shovel.name=Bronze Shovel
+item.essentialalloys:bronze.axe.name=Bronze Axe
+item.essentialalloys:bronze.hoe.name=Bronze Hoe
+
+item.essentialalloys:magic.sword.name=Magic Sword
+item.essentialalloys:magic.pickaxe.name=Magic Pickaxe
+item.essentialalloys:magic.shovel.name=Magic Shovel
+item.essentialalloys:magic.axe.name=Magic Axe
+item.essentialalloys:magic.hoe.name=Magic Hoe
+
+item.essentialalloys:steel.sword.name=Steel Sword
+item.essentialalloys:steel.pickaxe.name=Steel Pickaxe
+item.essentialalloys:steel.shovel.name=Steel Shovel
+item.essentialalloys:steel.axe.name=Steel Axe
+item.essentialalloys:steel.hoe.name=Steel Hoe
+
+## misc
+item.essentialalloys:nugget.steel.name=Steel Nugget
+
+
+# blocks
+
+## ores
+tile.essentialalloys:ore.copper.name=Copper Ore
+tile.essentialalloys:ore.tin.name=Tin Ore
+tile.essentialalloys:ore.silver.name=Silver Ore
+
+## storage
+tile.essentialalloys:storage.copper.name=Block of Copper
+tile.essentialalloys:storage.tin.name=Block of Tin
+tile.essentialalloys:storage.bronze.name=Block of Bronze
+tile.essentialalloys:storage.silver.name=Block of Silver
+tile.essentialalloys:storage.magic.name=Block of Magic
+
+tile.essentialalloys:crusher.name=Crusher
+tile.essentialalloys:crusherExt.name=Crusher Extension
+tile.essentialalloys:crusherExtMoving.name=(TECHNICAL)
+
+
+# materials
+
+material.bronze=Bronze
+material.magic=Magic
+material.steel=Steel
+
+
+# enchantment
+
+enchantment.essentialalloys:enchant=Enchanted
+enchantment.level.0=

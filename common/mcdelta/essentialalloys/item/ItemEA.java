@@ -1,7 +1,7 @@
 package mcdelta.essentialalloys.item;
 
-import mcdelta.core.EnumMCDMods;
 import mcdelta.core.item.ItemDelta;
+import mcdelta.essentialalloys.EssentialAlloys;
 import net.minecraft.creativetab.CreativeTabs;
 
 public class ItemEA extends ItemDelta
@@ -23,6 +23,6 @@ public class ItemEA extends ItemDelta
 
     public ItemEA(String s)
     {
-        super(EnumMCDMods.ESSENTIAL_ALLOYS, s);
+        super(EssentialAlloys.instance, s);
     }
 }

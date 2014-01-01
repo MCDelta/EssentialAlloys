@@ -2,13 +2,12 @@ package mcdelta.essentialalloys.block;
 
 import java.util.List;
 
-import mcdelta.core.EnumMCDMods;
 import mcdelta.core.assets.Assets;
 import mcdelta.core.assets.world.BlockData;
 import mcdelta.core.assets.world.BlockShapes;
 import mcdelta.core.assets.world.Position;
 import mcdelta.core.block.BlockSided;
-import mcdelta.essentialalloys.EssentialAlloysCore;
+import mcdelta.essentialalloys.EssentialAlloys;
 import mcdelta.essentialalloys.block.tileentity.TileEntityCrusher;
 import mcdelta.essentialalloys.network.PacketCrusherExtend;
 import mcdelta.essentialalloys.proxy.EAClientProxy;
@@ -45,7 +44,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
 
     public BlockCrusher(String s)
     {
-        super(EnumMCDMods.ESSENTIAL_ALLOYS, s, Material.piston);
+        super(EssentialAlloys.instance, s, Material.piston);
     }
 
     @Override
@@ -242,9 +241,9 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
         Position target = pos.move(Assets.getFacing(pos.getMeta()));
         World world = (World) pos.blockAccess;
 
-        if (!Assets.isAirBlock(target) && EssentialAlloysCore.crusherRecipes.containsKey(target.getBlockData().block))
+        if (!Assets.isAirBlock(target) && EssentialAlloys.crusherRecipes.containsKey(target.getBlockData().block))
         {
-            EntityItem item = new EntityItem(world, target.x, target.y, target.z, EssentialAlloysCore.crusherRecipes.get(target.getBlockData().block).copy());
+            EntityItem item = new EntityItem(world, target.x, target.y, target.z, EssentialAlloys.crusherRecipes.get(target.getBlockData().block).copy());
 
             if (Assets.isServer())
             {

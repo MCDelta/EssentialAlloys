@@ -2,12 +2,12 @@ package mcdelta.essentialalloys.block;
 
 import java.util.List;
 
-import mcdelta.core.EnumMCDMods;
 import mcdelta.core.assets.Assets;
 import mcdelta.core.assets.world.BlockData;
 import mcdelta.core.assets.world.BlockShapes;
 import mcdelta.core.assets.world.Position;
 import mcdelta.core.block.BlockSided;
+import mcdelta.essentialalloys.EssentialAlloys;
 import mcdelta.essentialalloys.proxy.EAClientProxy;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -28,7 +28,7 @@ public class BlockCrusherExt extends BlockSided
 
     public BlockCrusherExt(String s)
     {
-        super(EnumMCDMods.ESSENTIAL_ALLOYS, s, Material.piston);
+        super(EssentialAlloys.instance, s, Material.piston);
         setCreativeTab(null);
     }
 

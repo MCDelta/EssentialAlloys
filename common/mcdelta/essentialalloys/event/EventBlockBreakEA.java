@@ -1,6 +1,6 @@
 package mcdelta.essentialalloys.event;
 
-import mcdelta.essentialalloys.EssentialAlloysCore;
+import mcdelta.essentialalloys.EssentialAlloys;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,11 +14,11 @@ public class EventBlockBreakEA
     {
         if (event.dropChance < 1)
         {
-            if (EssentialAlloysCore.explosionRecipes.containsKey(event.block))
+            if (EssentialAlloys.explosionRecipes.containsKey(event.block))
             {
                 event.dropChance = 1;
                 event.drops.clear();
-                event.drops.add(EssentialAlloysCore.explosionRecipes.get(event.block).copy());
+                event.drops.add(EssentialAlloys.explosionRecipes.get(event.block).copy());
             }
         }
 

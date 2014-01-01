@@ -1,7 +1,7 @@
 package mcdelta.essentialalloys.block;
 
-import mcdelta.core.EnumMCDMods;
 import mcdelta.core.block.BlockDelta;
+import mcdelta.essentialalloys.EssentialAlloys;
 import mcdelta.essentialalloys.block.tileentity.TileEntityCrusher;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -39,7 +39,7 @@ public class BlockEA extends BlockDelta
 
     public BlockEA(String s, Material mat)
     {
-        super(EnumMCDMods.ESSENTIAL_ALLOYS, s, mat);
+        super(EssentialAlloys.instance, s, mat);
 
         setCreativeTab(CreativeTabs.tabBlock);
     }

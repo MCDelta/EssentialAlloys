@@ -1,11 +1,10 @@
 package mcdelta.essentialalloys.block;
 
-import static mcdelta.core.assets.Assets.logBlank;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import mcdelta.core.Logger;
 import mcdelta.core.assets.Assets;
 import mcdelta.core.assets.world.Position;
 import net.minecraft.block.Block;
@@ -198,9 +197,9 @@ public class BlockHotPlate extends BlockEA
 
         if (Assets.isServer())
         {
-            log("area: " + (dimensions[0] * dimensions[1] * dimensions[2]), dimensions[0] + "x" + dimensions[1] + "x" + dimensions[2]);
-            log("fuel: " + fuel + ", removed: " + removed);
-            logBlank();
+            Logger.log("area: " + (dimensions[0] * dimensions[1] * dimensions[2]), dimensions[0] + "x" + dimensions[1] + "x" + dimensions[2]);
+            Logger.log("fuel: " + fuel + ", removed: " + removed);
+            Logger.blank();
         }
 
         return true;

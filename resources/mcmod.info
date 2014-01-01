@@ -1,0 +1,17 @@
+[
+  {
+    "modid": "essentialalloys",
+    "name": "Essential Alloys",
+    "description": "Essential Alloys",
+    "credits": "Made By the MCDelta team",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "logoFile": "assets/essentialalloys/logo.png",
+	"dependencies": [
+      "required-after:deltacore"
+    ],
+    "authors": [
+      "TuxCraft"
+    ]
+  }
+]

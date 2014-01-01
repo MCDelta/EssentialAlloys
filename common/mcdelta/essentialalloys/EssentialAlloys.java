@@ -39,7 +39,7 @@ public class EssentialAlloys extends ModDelta
     // - work on armor
 
     public static final String MOD_ID = "essentialalloys";
-    
+
     @Instance(MOD_ID)
     public static EssentialAlloys instance;
 

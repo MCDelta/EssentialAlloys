@@ -96,6 +96,14 @@ public class RenderCrusherExtension implements ISimpleBlockRenderingHandler
             case WEST:
                 shift *= -1;
                 break;
+            case DOWN:
+                break;
+            case EAST:
+                break;
+            case NORTH:
+                break;
+            default:
+                break;
         }
 
         renderer.uvRotateEast = 0;

@@ -61,6 +61,14 @@ public class BlockCrusherExtMoving extends BlockCrusherExt
                 case WEST:
                     shift *= -1;
                     break;
+                case DOWN:
+                    break;
+                case EAST:
+                    break;
+                case NORTH:
+                    break;
+                default:
+                    break;
             }
 
             setBlockBoundsBasedOnState(world, x, y, z);

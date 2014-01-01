@@ -173,7 +173,6 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
 
     public void doThings(Position pos)
     {
-        Position target = pos.move(Assets.getFacing(pos.getMeta()));
         TileEntityCrusher tile = (TileEntityCrusher) pos.getTile();
 
         if ((tile.extend != 0) || (tile.cooldown != 0))
@@ -267,9 +266,6 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
 
     public void finishExtension(Position pos)
     {
-        Position target = pos.move(Assets.getFacing(pos.getMeta()));
-        World world = (World) target.blockAccess;
-
         Assets.placeBlock(pos.move(Assets.getFacing(pos.getMeta())), new BlockData(BlockEA.crusherExt, pos.getMeta()));
     }
 
@@ -277,8 +273,6 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
     {
         if (isExtended(pos))
         {
-            World world = (World) pos.blockAccess;
-
             ((TileEntityCrusher) pos.getTile()).extend = -8;
 
             Assets.placeBlock(pos.move(Assets.getFacing(pos.getMeta())), new BlockData(BlockEA.crusherExtMoving, pos.getMeta()));

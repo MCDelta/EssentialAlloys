@@ -15,8 +15,8 @@ import net.minecraft.world.World;
 
 public class BlockHotPlate extends BlockEA
 {
-    public static List<Block> bottom = new ArrayList();
-    public static List<Block> filler = new ArrayList();
+    public static List<Block> bottom = new ArrayList<Block>();
+    public static List<Block> filler = new ArrayList<Block>();
 
     public BlockHotPlate(String s)
     {

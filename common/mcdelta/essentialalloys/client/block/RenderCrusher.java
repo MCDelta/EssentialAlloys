@@ -124,7 +124,7 @@ public class RenderCrusher implements ISimpleBlockRenderingHandler
             renderer.clearOverrideBlockTexture();
 
             renderer.renderAllFaces = false;
-        }else
+        } else
         {
             if (renderer.hasOverrideBlockTexture())
             {

@@ -3,8 +3,6 @@ package mcdelta.essentialalloys;
 import java.util.HashMap;
 import java.util.Map;
 
-import mcdelta.core.ModDelta;
-import mcdelta.core.special.enchant.EnchantmentDelta;
 import mcdelta.essentialalloys.block.BlockEA;
 import mcdelta.essentialalloys.event.EventBlockBreakEA;
 import mcdelta.essentialalloys.item.ItemEA;

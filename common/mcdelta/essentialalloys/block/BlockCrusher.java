@@ -190,7 +190,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
 
                 if (flag && Assets.isServer())
                 {
-                    PacketDispatcher.sendPacketToAllAround(pos.x, pos.y, pos.z, 20, ((World) pos.blockAccess).provider.dimensionId,
+                    PacketDispatcher.sendPacketToAllAround(pos.x, pos.y, pos.z, 20, ((World) pos.world).provider.dimensionId,
                             Assets.populatePacket(new PacketCrusherExtend(tile.extend, pos.x, pos.y, pos.z)));
                 }
                 return;
@@ -203,7 +203,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
 
             if (flag && Assets.isServer())
             {
-                PacketDispatcher.sendPacketToAllAround(pos.x, pos.y, pos.z, 20, ((World) pos.blockAccess).provider.dimensionId,
+                PacketDispatcher.sendPacketToAllAround(pos.x, pos.y, pos.z, 20, ((World) pos.world).provider.dimensionId,
                         Assets.populatePacket(new PacketCrusherExtend(tile.extend, pos.x, pos.y, pos.z)));
             }
             return;
@@ -223,7 +223,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
     private boolean extend(Position pos)
     {
         Position target = pos.move(Assets.getFacing(pos.getMeta()));
-        World world = (World) pos.blockAccess;
+        World world = (World) pos.world;
 
         if (!Assets.isAirBlock(target) && EssentialAlloys.crusherRecipes.containsKey(target.getBlockData().block))
         {

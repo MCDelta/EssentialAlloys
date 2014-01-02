@@ -14,16 +14,16 @@ public class ItemDust extends ItemEA
 {
     private final boolean magic;
 
-    public ItemDust(String s)
+    public ItemDust(String name)
     {
-        this(s, false);
+        this(name, false);
     }
 
-    public ItemDust(String s, boolean b)
+    public ItemDust(String name, boolean magic)
     {
-        super("dust." + s);
+        super("dust." + name);
 
-        magic = b;
+        this.magic = magic;
         setCreativeTab(CreativeTabs.tabMaterials);
 
         if (magic)

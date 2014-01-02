@@ -32,7 +32,6 @@ public class TileEntityCrusher extends TileEntityDelta
         {
             return;
         }
-
         updateExtensions();
         updatePower();
     }
@@ -43,12 +42,10 @@ public class TileEntityCrusher extends TileEntityDelta
         {
             checkForPower = true;
         }
-
         if (power == 98)
         {
             Assets.updateBlock(getPosition());
         }
-
         if (power >= 100)
         {
             power = 100;
@@ -56,7 +53,6 @@ public class TileEntityCrusher extends TileEntityDelta
 
             BlockEA.crusher.doThings(getPosition());
         }
-
         if (checkForPower)
         {
             Position pos = getPosition();
@@ -86,7 +82,6 @@ public class TileEntityCrusher extends TileEntityDelta
                     }
                 }
             }
-
             if (!burningFurnaces.isEmpty())
             {
                 for (Position furnace : burningFurnaces)
@@ -97,7 +92,6 @@ public class TileEntityCrusher extends TileEntityDelta
                     tile.furnaceCookTime = 0;
                 }
             }
-
             BlockEA.crusher.doThings(getPosition());
 
             if (Assets.isServer())
@@ -106,7 +100,6 @@ public class TileEntityCrusher extends TileEntityDelta
                         Assets.populatePacket(new PacketCrusherPower(power, pos.x, pos.y, pos.z)));
             }
         }
-
         checkForPower = false;
     }
 
@@ -116,19 +109,16 @@ public class TileEntityCrusher extends TileEntityDelta
         {
             cooldown--;
         }
-
         if ((extend == 0) && (extendTotal != 0))
         {
             extendTotal = 0;
         }
-
         if (extend != 0)
         {
             if (extendTotal == 0)
             {
                 extendTotal = extend;
             }
-
             Position pos = new Position(worldObj, xCoord, yCoord, zCoord);
 
             Assets.updateBlock(pos.move(Assets.getFacing(pos.getMeta())));
@@ -143,9 +133,7 @@ public class TileEntityCrusher extends TileEntityDelta
                     cooldown = 5;
                     return;
                 }
-            }
-
-            else
+            } else
             {
                 extend--;
 

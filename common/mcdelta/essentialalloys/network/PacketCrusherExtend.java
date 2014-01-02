@@ -24,13 +24,13 @@ public class PacketCrusherExtend extends PacketDelta
         super(1);
     }
 
-    public PacketCrusherExtend(int i1, int i2, int i3, int i4)
+    public PacketCrusherExtend(int extend, int x, int y, int z)
     {
         super(1);
-        extend = i1;
-        x = i2;
-        y = i3;
-        z = i4;
+        this.extend = extend;
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
     @Override

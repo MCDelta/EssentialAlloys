@@ -66,12 +66,10 @@ public class BlockCrusherExt extends BlockSided
         {
             return false;
         }
-
         if (pos.copy().move(Assets.invertFace(getFacing(pos.getMeta()))).getBlockData().equals(new BlockData(BlockEA.crusher, pos.getMeta())))
         {
             return true;
         }
-
         return false;
     }
 
@@ -137,7 +135,6 @@ public class BlockCrusherExt extends BlockSided
             default:
                 break;
         }
-
         setBlockBoundsBasedOnState(world, x, y, z);
         super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
 

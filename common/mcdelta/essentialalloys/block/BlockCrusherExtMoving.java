@@ -70,7 +70,6 @@ public class BlockCrusherExtMoving extends BlockCrusherExt
                 default:
                     break;
             }
-
             setBlockBoundsBasedOnState(world, x, y, z);
             super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
 

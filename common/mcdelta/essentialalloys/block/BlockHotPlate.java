@@ -45,13 +45,13 @@ public class BlockHotPlate extends BlockEA
 
         for (int radius = 1; radius < (dimensions.length + 1); radius++)
         {
-            boolean stahp = false;
+            boolean stop = false;
 
-            if (!stahp)
+            if (!stop)
             {
                 for (int x = radius; x > (-radius - 1); x--)
                 {
-                    if (!stahp)
+                    if (!stop)
                     {
                         for (int z = radius; z > (-radius - 1); z--)
                         {
@@ -59,31 +59,29 @@ public class BlockHotPlate extends BlockEA
 
                             if (!bottom.contains(target.getBlock()))
                             {
-                                stahp = true;
+                                stop = true;
                                 break;
                             }
                         }
                     }
                 }
             }
-
-            if (!stahp)
+            if (!stop)
             {
                 dimensions[radius - 1] = true;
             }
         }
-
         int radius = (dimensions[1] ? 2 : dimensions[0] ? 1 : 0) + 1;
 
-        boolean stahp = false;
+        boolean stop = false;
 
         for (int y = 1; y < (heights.length + 1); y++)
         {
-            if (!stahp)
+            if (!stop)
             {
                 for (int x = radius; x > (-radius - 1); x--)
                 {
-                    if (!stahp)
+                    if (!stop)
                     {
                         for (int z = radius; z > (-radius - 1); z--)
                         {
@@ -99,16 +97,14 @@ public class BlockHotPlate extends BlockEA
                                             && (((target.getBlock() != Block.stoneSingleSlab) || (target.getBlock() != Block.stoneDoubleSlab)) && ((target.getMeta() != 6) && (target
                                                     .getMeta() != 14))))
                                     {
-                                        stahp = true;
+                                        stop = true;
                                         break;
                                     }
-                                }
-
-                                else
+                                } else
                                 {
                                     if (!Assets.isAirBlock(target) && !filler.contains(target.getBlock()))
                                     {
-                                        stahp = true;
+                                        stop = true;
                                         break;
                                     }
                                 }
@@ -117,13 +113,11 @@ public class BlockHotPlate extends BlockEA
                     }
                 }
             }
-
-            if (!stahp)
+            if (!stop)
             {
                 heights[y - 1] = true;
             }
         }
-
         int x = ((dimensions[1] ? 2 : dimensions[0] ? 1 : 0) * 2) + 1;
         int y = heights[3] ? 4 : heights[2] ? 3 : heights[1] ? 2 : heights[0] ? 1 : 0;
         int z = x;
@@ -154,7 +148,6 @@ public class BlockHotPlate extends BlockEA
                 }
             }
         }
-
         return i;
     }
 
@@ -183,7 +176,6 @@ public class BlockHotPlate extends BlockEA
                 }
             }
         }
-
         return false;
     }
 
@@ -201,8 +193,6 @@ public class BlockHotPlate extends BlockEA
             Logger.log("fuel: " + fuel + ", removed: " + removed);
             Logger.blank();
         }
-
         return true;
     }
-
 }

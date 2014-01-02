@@ -24,13 +24,13 @@ public class PacketCrusherPower extends PacketDelta
         super(0);
     }
 
-    public PacketCrusherPower(int i1, int i2, int i3, int i4)
+    public PacketCrusherPower(int power, int x, int y, int z)
     {
         super(0);
-        power = i1;
-        x = i2;
-        y = i3;
-        z = i4;
+        this.power = power;
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
     @Override

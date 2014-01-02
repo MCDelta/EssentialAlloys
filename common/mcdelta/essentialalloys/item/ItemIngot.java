@@ -9,16 +9,16 @@ public class ItemIngot extends ItemEA
 {
     private final boolean magic;
 
-    public ItemIngot(String s)
+    public ItemIngot(String name)
     {
-        this(s, false);
+        this(name, false);
     }
 
-    public ItemIngot(String s, boolean b)
+    public ItemIngot(String s, boolean magic)
     {
         super("ingot." + s);
 
-        magic = b;
+        this.magic = magic;
         setCreativeTab(CreativeTabs.tabMaterials);
 
         if (magic)

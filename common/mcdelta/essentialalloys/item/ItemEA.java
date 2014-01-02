@@ -21,8 +21,8 @@ public class ItemEA extends ItemDelta
 
     public static ItemEA nuggetSteel = (ItemEA) new ItemEA("nugget.steel").setCreativeTab(CreativeTabs.tabMaterials);
 
-    public ItemEA(String s)
+    public ItemEA(String name)
     {
-        super(EssentialAlloys.instance, s);
+        super(EssentialAlloys.instance, name);
     }
 }

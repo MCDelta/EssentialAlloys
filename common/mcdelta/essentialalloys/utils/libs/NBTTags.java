@@ -2,7 +2,6 @@ package mcdelta.essentialalloys.utils.libs;
 
 public class NBTTags
 {
-    // Essential Alloys
     public static final String CRUSHER_STATUS = "CrushStatus";
     public static final String CRUSHER_STATUS_TOTAL = "CrushStatusTotal";
     public static final String CRUSHER_COOLDOWN = "CrushCooldown";

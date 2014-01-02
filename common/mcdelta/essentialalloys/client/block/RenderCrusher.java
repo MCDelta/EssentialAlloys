@@ -19,7 +19,6 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class RenderCrusher implements ISimpleBlockRenderingHandler
 {
-
     @Override
     public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
     {
@@ -98,7 +97,6 @@ public class RenderCrusher implements ISimpleBlockRenderingHandler
 
                 return true;
             }
-
             float[] arr = BlockShapes.crusherExtended(face);
             renderer.setRenderBounds(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
             renderer.renderStandardBlock(block, x, y, z);
@@ -126,9 +124,7 @@ public class RenderCrusher implements ISimpleBlockRenderingHandler
             renderer.clearOverrideBlockTexture();
 
             renderer.renderAllFaces = false;
-        }
-
-        else
+        }else
         {
             if (renderer.hasOverrideBlockTexture())
             {
@@ -138,12 +134,10 @@ public class RenderCrusher implements ISimpleBlockRenderingHandler
 
                 return true;
             }
-
             float[] arr = BlockShapes.crusherNonExtended(face);
             renderer.setRenderBounds(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
             renderer.renderStandardBlock(block, x, y, z);
         }
-
         renderer.uvRotateEast = 0;
         renderer.uvRotateWest = 0;
         renderer.uvRotateSouth = 0;
@@ -164,5 +158,4 @@ public class RenderCrusher implements ISimpleBlockRenderingHandler
     {
         return EAClientProxy.typeCrusher;
     }
-
 }

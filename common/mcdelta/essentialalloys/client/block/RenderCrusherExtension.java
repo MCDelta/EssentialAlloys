@@ -16,7 +16,6 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class RenderCrusherExtension implements ISimpleBlockRenderingHandler
 {
-
     @Override
     public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
     {
@@ -39,7 +38,6 @@ public class RenderCrusherExtension implements ISimpleBlockRenderingHandler
 
             return;
         }
-
         Position pos = new Position(world, x, y, z);
 
         double xOffset = Tessellator.instance.xOffset;
@@ -79,7 +77,6 @@ public class RenderCrusherExtension implements ISimpleBlockRenderingHandler
                     break;
             }
         }
-
         renderer.renderAllFaces = true;
         RenderAssets.rotateSidedRenderer(renderer, face);
 
@@ -105,7 +102,6 @@ public class RenderCrusherExtension implements ISimpleBlockRenderingHandler
             default:
                 break;
         }
-
         renderer.uvRotateEast = 0;
         renderer.uvRotateWest = 0;
         renderer.uvRotateSouth = 0;
@@ -163,8 +159,5 @@ public class RenderCrusherExtension implements ISimpleBlockRenderingHandler
 
     @Override
     public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
-    {
-
-    }
-
+    {}
 }

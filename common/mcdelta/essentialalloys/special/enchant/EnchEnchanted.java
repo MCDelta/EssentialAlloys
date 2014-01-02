@@ -6,9 +6,9 @@ import mcdelta.essentialalloys.item.ItemEA;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
 
+//TODO finish
 public class EnchEnchanted extends EnchantmentDelta
 {
-
     public EnchEnchanted(String s, int rarity, EnumEnchantmentType type)
     {
         super(EssentialAlloys.instance, s, rarity, type);

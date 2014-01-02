@@ -42,12 +42,12 @@ public class GeneratorOres implements IWorldGenerator
 
     protected void genStandardOre(int veinsPerChunk, WorldGenerator worldGen, int lowestLayer, int highestLayer, World world, Random rand, int chunkX, int chunkZ)
     {
-        for (int l = 0; l < veinsPerChunk; ++l)
+        for (int vein = 0; vein < veinsPerChunk; ++vein)
         {
-            int i1 = chunkX + rand.nextInt(16);
-            int j1 = rand.nextInt(highestLayer - lowestLayer) + lowestLayer;
-            int k1 = chunkZ + rand.nextInt(16);
-            worldGen.generate(world, rand, i1, j1, k1);
+            int x = chunkX + rand.nextInt(16);
+            int y = rand.nextInt(highestLayer - lowestLayer) + lowestLayer;
+            int z = chunkZ + rand.nextInt(16);
+            worldGen.generate(world, rand, x, y, z);
         }
     }
 }

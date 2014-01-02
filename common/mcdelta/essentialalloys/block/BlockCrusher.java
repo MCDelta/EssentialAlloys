@@ -91,18 +91,13 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
             {
                 icon = insideIcon;
             }
-        }
-
-        else if (side == 1)
+        } else if (side == 1)
         {
             return frontIcon;
-        }
-
-        else if (side == 0)
+        } else if (side == 0)
         {
             return blockIcon;
         }
-
         if (!crusher)
         {
             if (icon == insideIcon)
@@ -115,7 +110,6 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
                 icon = frontIcon;
             }
         }
-
         return icon;
     }
 
@@ -135,9 +129,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
         if ((((TileEntityCrusher) pos.getTile()) != null) && (BlockEA.crusher.isExtended(pos) || (((TileEntityCrusher) pos.getTile()).extend != 0)))
         {
             setBlockBounds(BlockShapes.crusherNonExtended(face));
-        }
-
-        else
+        } else
         {
             setBlockBounds(BlockShapes.crusherExtended(face));
         }
@@ -179,7 +171,6 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
         {
             return;
         }
-
         boolean flag = false;
 
         if (!isExtended(pos) && Assets.isPoweredIndirectly(pos))
@@ -190,7 +181,6 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
 
                 return;
             }
-
             if (extend(pos))
             {
                 tile.power -= 100;
@@ -203,12 +193,9 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
                     PacketDispatcher.sendPacketToAllAround(pos.x, pos.y, pos.z, 20, ((World) pos.blockAccess).provider.dimensionId,
                             Assets.populatePacket(new PacketCrusherExtend(tile.extend, pos.x, pos.y, pos.z)));
                 }
-
                 return;
             }
-        }
-
-        else if (!Assets.isPoweredIndirectly(pos))
+        } else if (!Assets.isPoweredIndirectly(pos))
         {
             flag = retract(pos);
 
@@ -219,7 +206,6 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
                 PacketDispatcher.sendPacketToAllAround(pos.x, pos.y, pos.z, 20, ((World) pos.blockAccess).provider.dimensionId,
                         Assets.populatePacket(new PacketCrusherExtend(tile.extend, pos.x, pos.y, pos.z)));
             }
-
             return;
         }
     }
@@ -230,7 +216,6 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
         {
             return false;
         }
-
         return pos.move(Assets.getFacing(pos.getMeta())).getBlockData().equals(new BlockData(BlockEA.crusherExt, pos.getMeta()))
                 || pos.move(Assets.getFacing(pos.getMeta())).getBlockData().equals(new BlockData(BlockEA.crusherExtMoving, pos.getMeta()));
     }
@@ -248,15 +233,12 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
             {
                 world.spawnEntityInWorld(item);
             }
-
             Assets.setToAir(target);
         }
-
         if (pos.move(Assets.getFacing(pos.getMeta())).getBlockData() != null)
         {
             return false;
         }
-
         ((TileEntityCrusher) pos.getTile()).extend = 3;
 
         Assets.placeBlock(pos.move(Assets.getFacing(pos.getMeta())), new BlockData(BlockEA.crusherExtMoving, pos.getMeta()));
@@ -279,7 +261,6 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
 
             return true;
         }
-
         return false;
     }
 
@@ -312,7 +293,6 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
         {
             icon = sideIconOn;
         }
-
         return icon;
     }
 

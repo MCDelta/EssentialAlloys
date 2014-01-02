@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import mcdelta.core.Logger;
 import mcdelta.core.assets.Assets;
 import mcdelta.core.assets.world.Position;
+import mcdelta.core.logging.Logger;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;

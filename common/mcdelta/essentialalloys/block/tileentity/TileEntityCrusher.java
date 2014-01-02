@@ -3,11 +3,11 @@ package mcdelta.essentialalloys.block.tileentity;
 import java.util.List;
 
 import mcdelta.core.assets.Assets;
-import mcdelta.core.assets.NBTTags;
 import mcdelta.core.assets.world.Position;
 import mcdelta.core.block.tileentity.TileEntityDelta;
 import mcdelta.essentialalloys.block.BlockEA;
 import mcdelta.essentialalloys.network.PacketCrusherPower;
+import mcdelta.essentialalloys.utils.libs.NBTTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.item.ItemStack;

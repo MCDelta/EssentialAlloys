@@ -9,23 +9,23 @@ import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 
 public class EventBlockBreakEA
 {
-    @ForgeSubscribe
-    public void breakBlock(HarvestDropsEvent event)
-    {
-        if (event.dropChance < 1)
-        {
-            if (EssentialAlloys.explosionRecipes.containsKey(event.block))
-            {
-                event.dropChance = 1;
-                event.drops.clear();
-                event.drops.add(EssentialAlloys.explosionRecipes.get(event.block).copy());
-            }
-        }
-
-        else if (event.block == Block.oreNetherQuartz)
-        {
-            event.drops.clear();
-            event.drops.add(new ItemStack(Item.netherQuartz, 4).copy());
-        }
-    }
+     @ForgeSubscribe
+     public void breakBlock (final HarvestDropsEvent event)
+     {
+          if (event.dropChance < 1)
+          {
+               if (EssentialAlloys.explosionRecipes.containsKey(event.block))
+               {
+                    event.dropChance = 1;
+                    event.drops.clear();
+                    event.drops.add(EssentialAlloys.explosionRecipes.get(event.block).copy());
+               }
+          }
+          
+          else if (event.block == Block.oreNetherQuartz)
+          {
+               event.drops.clear();
+               event.drops.add(new ItemStack(Item.netherQuartz, 4).copy());
+          }
+     }
 }

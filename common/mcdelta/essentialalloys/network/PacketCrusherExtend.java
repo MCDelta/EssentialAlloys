@@ -14,57 +14,72 @@ import cpw.mods.fml.common.network.Player;
 
 public class PacketCrusherExtend extends PacketDelta
 {
-    private int extend;
-    private int x;
-    private int y;
-    private int z;
-
-    public PacketCrusherExtend()
-    {
-        super(1);
-    }
-
-    public PacketCrusherExtend(int extend, int x, int y, int z)
-    {
-        super(1);
-        this.extend = extend;
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
-
-    @Override
-    public void writeData(DataOutputStream data) throws IOException
-    {
-        data.writeInt(extend);
-        data.writeInt(x);
-        data.writeInt(y);
-        data.writeInt(z);
-    }
-
-    @Override
-    public void readData(DataInputStream data) throws IOException
-    {
-        extend = data.readInt();
-        x = data.readInt();
-        y = data.readInt();
-        z = data.readInt();
-    }
-
-    @Override
-    public void execute(INetworkManager manager, Player playerParam)
-    {
-        EntityPlayer player = (EntityPlayer) playerParam;
-
-        World world = player.worldObj;
-
-        Position pos = new Position(world, x, y, z);
-
-        if (pos.getTile() instanceof TileEntityCrusher)
-        {
-            TileEntityCrusher tile = (TileEntityCrusher) pos.getTile();
-
-            tile.extend = extend;
-        }
-    }
+     private int extend;
+     private int x;
+     private int y;
+     private int z;
+     
+     
+     
+     
+     public PacketCrusherExtend ()
+     {
+          super(1);
+     }
+     
+     
+     
+     
+     public PacketCrusherExtend (final int extend, final int x, final int y, final int z)
+     {
+          super(1);
+          this.extend = extend;
+          this.x = x;
+          this.y = y;
+          this.z = z;
+     }
+     
+     
+     
+     
+     @Override
+     public void writeData (final DataOutputStream data) throws IOException
+     {
+          data.writeInt(this.extend);
+          data.writeInt(this.x);
+          data.writeInt(this.y);
+          data.writeInt(this.z);
+     }
+     
+     
+     
+     
+     @Override
+     public void readData (final DataInputStream data) throws IOException
+     {
+          this.extend = data.readInt();
+          this.x = data.readInt();
+          this.y = data.readInt();
+          this.z = data.readInt();
+     }
+     
+     
+     
+     
+     @Override
+     public void execute (final INetworkManager manager, final Player playerParam)
+     {
+          final EntityPlayer player = (EntityPlayer) playerParam;
+          
+          final World world = player.worldObj;
+          
+          final Position pos = new Position(world, this.x, this.y, this.z);
+          
+          if (pos.getTile() instanceof TileEntityCrusher)
+          {
+               final TileEntityCrusher tile = (TileEntityCrusher) pos.getTile();
+               
+               tile.extend = this.extend;
+          }
+     }
 }

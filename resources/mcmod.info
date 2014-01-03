@@ -7,7 +7,7 @@
     "version": "${version}",
     "mcversion": "${mcversion}",
     "logoFile": "assets/essentialalloys/logo.png",
-	"dependencies": [
+    "dependencies": [
       "required-after:deltacore"
     ],
     "authors": [

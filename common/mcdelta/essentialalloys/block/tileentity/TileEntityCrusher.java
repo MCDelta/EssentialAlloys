@@ -31,7 +31,7 @@ public class TileEntityCrusher extends TileEntityDelta
      {
           super.updateEntity();
           
-          if (getBlockType() == null)
+          if (this.getBlockType() == null)
           {
                return;
           }
@@ -50,18 +50,18 @@ public class TileEntityCrusher extends TileEntityDelta
           }
           if (this.power == 98)
           {
-               Assets.updateBlock(getPosition());
+               Assets.updateBlock(this.getPosition());
           }
           if (this.power >= 100)
           {
                this.power = 100;
                this.checkForPower = false;
                
-               EAContent.crusher.doThings(getPosition());
+               EAContent.crusher.doThings(this.getPosition());
           }
           if (this.checkForPower)
           {
-               final Position pos = getPosition();
+               final Position pos = this.getPosition();
                
                final List<Position> idleFurnaces = Assets.checkAdjacentBlocks(Block.furnaceIdle, pos);
                final List<Position> burningFurnaces = Assets.checkAdjacentBlocks(Block.furnaceBurning, pos);
@@ -80,7 +80,7 @@ public class TileEntityCrusher extends TileEntityDelta
                               {
                                    tile.decrStackSize(1, 1);
                                    tile.furnaceBurnTime = TileEntityFurnace.getItemBurnTime(fuel);
-                                   BlockFurnace.updateFurnaceBlockState(true, worldObj, furnace.x, furnace.y, furnace.z);
+                                   BlockFurnace.updateFurnaceBlockState(true, this.worldObj, furnace.x, furnace.y, furnace.z);
                                    tile.onInventoryChanged();
                                    
                                    this.power++;
@@ -98,11 +98,11 @@ public class TileEntityCrusher extends TileEntityDelta
                          tile.furnaceCookTime = 0;
                     }
                }
-               EAContent.crusher.doThings(getPosition());
+               EAContent.crusher.doThings(this.getPosition());
                
                if (Assets.isServer())
                {
-                    PacketDispatcher.sendPacketToAllAround(pos.x, pos.y, pos.z, 20, worldObj.provider.dimensionId, Assets.populatePacket(new PacketCrusherPower(this.power, pos.x, pos.y, pos.z)));
+                    PacketDispatcher.sendPacketToAllAround(pos.x, pos.y, pos.z, 20, this.worldObj.provider.dimensionId, Assets.populatePacket(new PacketCrusherPower(this.power, pos.x, pos.y, pos.z)));
                }
           }
           this.checkForPower = false;
@@ -127,7 +127,7 @@ public class TileEntityCrusher extends TileEntityDelta
                {
                     this.extendTotal = this.extend;
                }
-               final Position pos = new Position(worldObj, xCoord, yCoord, zCoord);
+               final Position pos = new Position(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
                
                Assets.updateBlock(pos.move(Assets.getFacing(pos.getMeta())));
                
@@ -137,7 +137,7 @@ public class TileEntityCrusher extends TileEntityDelta
                     
                     if (this.extend == 0)
                     {
-                         EAContent.crusher.finishRetraction(new Position(worldObj, xCoord, yCoord, zCoord));
+                         EAContent.crusher.finishRetraction(new Position(this.worldObj, this.xCoord, this.yCoord, this.zCoord));
                          this.cooldown = 5;
                          return;
                     }
@@ -148,7 +148,7 @@ public class TileEntityCrusher extends TileEntityDelta
                     
                     if (this.extend == 0)
                     {
-                         EAContent.crusher.finishExtension(new Position(worldObj, xCoord, yCoord, zCoord));
+                         EAContent.crusher.finishExtension(new Position(this.worldObj, this.xCoord, this.yCoord, this.zCoord));
                          this.cooldown = 5;
                          return;
                     }
@@ -164,11 +164,11 @@ public class TileEntityCrusher extends TileEntityDelta
      {
           super.writeToNBT(nbtTag);
           
-          nbtTag.setInteger(NBTTags.CRUSHER_STATUS, extend);
-          nbtTag.setInteger(NBTTags.CRUSHER_STATUS_TOTAL, extendTotal);
-          nbtTag.setInteger(NBTTags.CRUSHER_COOLDOWN, cooldown);
-          nbtTag.setInteger(NBTTags.CRUSHER_POWER, power);
-          nbtTag.setBoolean(NBTTags.CRUSHER_CHECK, checkForPower);
+          nbtTag.setInteger(NBTTags.CRUSHER_STATUS, this.extend);
+          nbtTag.setInteger(NBTTags.CRUSHER_STATUS_TOTAL, this.extendTotal);
+          nbtTag.setInteger(NBTTags.CRUSHER_COOLDOWN, this.cooldown);
+          nbtTag.setInteger(NBTTags.CRUSHER_POWER, this.power);
+          nbtTag.setBoolean(NBTTags.CRUSHER_CHECK, this.checkForPower);
      }
      
      
@@ -179,10 +179,10 @@ public class TileEntityCrusher extends TileEntityDelta
      {
           super.readFromNBT(nbtTag);
           
-          extend = nbtTag.getInteger(NBTTags.CRUSHER_STATUS);
-          extendTotal = nbtTag.getInteger(NBTTags.CRUSHER_STATUS_TOTAL);
-          cooldown = nbtTag.getInteger(NBTTags.CRUSHER_COOLDOWN);
-          power = nbtTag.getInteger(NBTTags.CRUSHER_POWER);
-          checkForPower = nbtTag.getBoolean(NBTTags.CRUSHER_CHECK);
+          this.extend = nbtTag.getInteger(NBTTags.CRUSHER_STATUS);
+          this.extendTotal = nbtTag.getInteger(NBTTags.CRUSHER_STATUS_TOTAL);
+          this.cooldown = nbtTag.getInteger(NBTTags.CRUSHER_COOLDOWN);
+          this.power = nbtTag.getInteger(NBTTags.CRUSHER_POWER);
+          this.checkForPower = nbtTag.getBoolean(NBTTags.CRUSHER_CHECK);
      }
 }

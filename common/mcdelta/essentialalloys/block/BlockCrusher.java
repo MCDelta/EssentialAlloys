@@ -60,12 +60,12 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
      {
           super.registerIcons(register);
           
-          sideIcon = doRegister(name + "_side_off", register);
-          this.sideIconOn = doRegister(name + "_side_on", register);
-          this.insideIcon = doRegister(name + "_inside", register);
+          this.sideIcon = this.doRegister(this.name + "_side_off", register);
+          this.sideIconOn = this.doRegister(this.name + "_side_on", register);
+          this.insideIcon = this.doRegister(this.name + "_inside", register);
           this.studIcon = Block.blockNetherQuartz.getIcon(0, 0);
           this.shaftIcon = Block.cobblestone.getIcon(2, 0);
-          blockIcon = Block.brick.getIcon(0, 0);
+          this.blockIcon = Block.brick.getIcon(0, 0);
      }
      
      
@@ -90,39 +90,39 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           {
                final EnumFacing face = Assets.getFacing(meta);
                
-               final boolean b1 = minX == BlockShapes.crusherNonExtended(face)[0];
-               final boolean b2 = minY == BlockShapes.crusherNonExtended(face)[1];
-               final boolean b3 = minZ == BlockShapes.crusherNonExtended(face)[2];
+               final boolean b1 = this.minX == BlockShapes.crusherNonExtended(face)[0];
+               final boolean b2 = this.minY == BlockShapes.crusherNonExtended(face)[1];
+               final boolean b3 = this.minZ == BlockShapes.crusherNonExtended(face)[2];
                
-               final boolean b4 = maxX == BlockShapes.crusherNonExtended(face)[3];
-               final boolean b5 = maxY == BlockShapes.crusherNonExtended(face)[4];
-               final boolean b6 = maxZ == BlockShapes.crusherNonExtended(face)[5];
+               final boolean b4 = this.maxX == BlockShapes.crusherNonExtended(face)[3];
+               final boolean b5 = this.maxY == BlockShapes.crusherNonExtended(face)[4];
+               final boolean b6 = this.maxZ == BlockShapes.crusherNonExtended(face)[5];
                
                final boolean b = !b1 || !b2 || !b3 || !b4 || !b5 || !b6;
                
-               if (icon == frontIcon && !b)
+               if (icon == this.frontIcon && !b)
                {
                     icon = this.insideIcon;
                }
           }
           else if (side == 1)
           {
-               return frontIcon;
+               return this.frontIcon;
           }
           else if (side == 0)
           {
-               return blockIcon;
+               return this.blockIcon;
           }
           if (!crusher)
           {
                if (icon == this.insideIcon)
                {
-                    icon = frontIcon;
+                    icon = this.frontIcon;
                }
                
-               if (icon == blockIcon)
+               if (icon == this.blockIcon)
                {
-                    icon = frontIcon;
+                    icon = this.frontIcon;
                }
           }
           return icon;
@@ -149,11 +149,11 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           
           if ((TileEntityCrusher) pos.getTile() != null && (EAContent.crusher.isExtended(pos) || ((TileEntityCrusher) pos.getTile()).extend != 0))
           {
-               setBlockBounds(BlockShapes.crusherNonExtended(face));
+               this.setBlockBounds(BlockShapes.crusherNonExtended(face));
           }
           else
           {
-               setBlockBounds(BlockShapes.crusherExtended(face));
+               this.setBlockBounds(BlockShapes.crusherExtended(face));
           }
      }
      
@@ -345,7 +345,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           
           Icon icon = this.getIcon(side, world.getBlockMetadata(x, y, z));
           
-          if (icon == sideIcon && ((TileEntityCrusher) pos.getTile()).power >= 98)
+          if (icon == this.sideIcon && ((TileEntityCrusher) pos.getTile()).power >= 98)
           {
                icon = this.sideIconOn;
           }

@@ -31,11 +31,11 @@ public class ItemDust extends ItemEA
           super("dust." + name);
           
           this.magic = magic;
-          setCreativeTab(CreativeTabs.tabMaterials);
+          this.setCreativeTab(CreativeTabs.tabMaterials);
           
           if (magic)
           {
-               maxStackSize = 1;
+               this.maxStackSize = 1;
           }
      }
      

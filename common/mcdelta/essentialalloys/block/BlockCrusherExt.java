@@ -33,7 +33,7 @@ public class BlockCrusherExt extends BlockSided
      public BlockCrusherExt (final String s)
      {
           super(EssentialAlloys.instance, s, Material.piston);
-          setCreativeTab(null);
+          this.setCreativeTab(null);
      }
      
      
@@ -43,7 +43,7 @@ public class BlockCrusherExt extends BlockSided
      @SideOnly (Side.CLIENT)
      public void registerIcons (final IconRegister register)
      {
-          this.extensionIcon = doRegister("crusherExt", register);
+          this.extensionIcon = this.doRegister("crusherExt", register);
      }
      
      
@@ -139,7 +139,7 @@ public class BlockCrusherExt extends BlockSided
           final Position pos = new Position(world, x, y, z);
           final EnumFacing face = Assets.getFacing(pos.getMeta());
           
-          setBlockBounds(BlockShapes.crusherExtension(face, 0));
+          this.setBlockBounds(BlockShapes.crusherExtension(face, 0));
      }
      
      
@@ -172,7 +172,7 @@ public class BlockCrusherExt extends BlockSided
           this.setBlockBoundsBasedOnState(world, x, y, z);
           super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
           
-          setBlockBounds(BlockShapes.extensionShaft(face, shift, 0));
+          this.setBlockBounds(BlockShapes.extensionShaft(face, shift, 0));
           super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
      }
      

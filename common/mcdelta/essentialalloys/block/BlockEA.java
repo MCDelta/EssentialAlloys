@@ -11,6 +11,6 @@ public class BlockEA extends BlockDelta
      {
           super(EssentialAlloys.instance, s, mat);
           
-          setCreativeTab(CreativeTabs.tabBlock);
+          this.setCreativeTab(CreativeTabs.tabBlock);
      }
 }

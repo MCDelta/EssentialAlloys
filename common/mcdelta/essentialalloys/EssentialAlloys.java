@@ -3,9 +3,8 @@ package mcdelta.essentialalloys;
 import java.util.HashMap;
 import java.util.Map;
 
+import mcdelta.core.IContent;
 import mcdelta.core.ModDelta;
-import mcdelta.core.material.ItemMaterial;
-import mcdelta.core.material.MaterialRegistry;
 import mcdelta.essentialalloys.event.EventBlockBreakEA;
 import mcdelta.essentialalloys.proxy.EACommonProxy;
 import mcdelta.essentialalloys.world.GeneratorOres;
@@ -45,10 +44,6 @@ public class EssentialAlloys extends ModDelta
      public static Map<Block, ItemStack> crusherRecipes   = new HashMap<Block, ItemStack>();
      public static Map<Block, ItemStack> explosionRecipes = new HashMap<Block, ItemStack>();
      
-     public static ItemMaterial          BRONZE;
-     public static ItemMaterial          MAGIC;
-     public static ItemMaterial          STEEL;
-     
      
      
      
@@ -56,26 +51,6 @@ public class EssentialAlloys extends ModDelta
      public void preInit (final FMLPreInitializationEvent event)
      {
           init(event);
-          
-          addMaterials();
-     }
-     
-     
-     
-     
-     private void addMaterials ()
-     {
-          BRONZE = MaterialRegistry.add(this, new Object[]
-          { "bronze", 0xd3b838, "ingotBronze", true, true, false }, new Object[]
-          { 2, 418, 9.0F, 2.0F, 22 }, null);
-          MAGIC = MaterialRegistry.add(this, new Object[]
-          { "magic", 0x7340ad, "ingotMagic", true, true, true }, new Object[]
-          { 3, 205, 12.0F, 1.0F, 44 }, null);
-          STEEL = MaterialRegistry.add(this, new Object[]
-          { "steel", 0x637080, "ingotSteel", true, true, false }, new Object[]
-          { 4, 1111, 4.0F, 3.0F, 12 }, new Object[]
-          { 33, new int[]
-          { 3, 8, 6, 3 }, 10 });
      }
      
      
@@ -84,8 +59,6 @@ public class EssentialAlloys extends ModDelta
      @EventHandler
      public void load (final FMLInitializationEvent event)
      {
-          EAContent.load();
-          
           explosionRecipes.put(Block.oreIron, new ItemStack(EAContent.dustIron, 3));
           explosionRecipes.put(Block.oreGold, new ItemStack(EAContent.dustGold, 3));
           explosionRecipes.put(EAContent.oreCopper, new ItemStack(EAContent.dustCopper, 3));
@@ -158,5 +131,15 @@ public class EssentialAlloys extends ModDelta
      @EventHandler
      public void postInit (final FMLPostInitializationEvent event)
      {
+     }
+     
+     private IContent content = new EAContent();
+     
+     
+     
+     
+     public IContent content ()
+     {
+          return content;
      }
 }

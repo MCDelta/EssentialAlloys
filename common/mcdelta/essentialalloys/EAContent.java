@@ -1,7 +1,9 @@
 package mcdelta.essentialalloys;
 
+import mcdelta.core.IContent;
 import mcdelta.core.block.BlockDelta;
 import mcdelta.core.enchant.EnchantmentDelta;
+import mcdelta.core.material.ItemMaterial;
 import mcdelta.essentialalloys.block.BlockCrusher;
 import mcdelta.essentialalloys.block.BlockCrusherExt;
 import mcdelta.essentialalloys.block.BlockCrusherExtMoving;
@@ -19,7 +21,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class EAContent
+public class EAContent implements IContent
 {
      public static ItemIngot             ingotCopper;
      public static ItemIngot             ingotTin;
@@ -55,7 +57,8 @@ public class EAContent
      
      
      
-     public static void load ()
+     @Override
+     public void addContent ()
      {
           ingotCopper = new ItemIngot("copper");
           ingotTin = new ItemIngot("tin");
@@ -116,6 +119,24 @@ public class EAContent
           OreDictionary.registerOre("dustGold", EAContent.dustGold);
           
           OreDictionary.registerOre("nuggetSteel", EAContent.nuggetSteel);
+     }
+     
+     
+     
+     
+     @Override
+     public void addMaterialBasedContent (ItemMaterial mat)
+     {
+          
+     }
+
+
+
+
+     @Override
+     public void addRecipes ()
+     {
+          
      }
      
 }

@@ -1,8 +1,7 @@
 package mcdelta.essentialalloys;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import mcdelta.core.block.BlockDelta;
-import mcdelta.core.material.ToolMaterial;
+import mcdelta.core.enchant.EnchantmentDelta;
 import mcdelta.essentialalloys.block.BlockCrusher;
 import mcdelta.essentialalloys.block.BlockCrusherExt;
 import mcdelta.essentialalloys.block.BlockCrusherExtMoving;
@@ -10,12 +9,15 @@ import mcdelta.essentialalloys.block.BlockEAOre;
 import mcdelta.essentialalloys.block.BlockHotPlate;
 import mcdelta.essentialalloys.block.BlockStorage;
 import mcdelta.essentialalloys.block.tileentity.TileEntityCrusher;
+import mcdelta.essentialalloys.enchant.EnchEnchanted;
 import mcdelta.essentialalloys.item.ItemDust;
 import mcdelta.essentialalloys.item.ItemEA;
 import mcdelta.essentialalloys.item.ItemIngot;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class EAContent
 {
@@ -48,27 +50,13 @@ public class EAContent
      public static BlockDelta            blockBronze;
      public static BlockDelta            blockMagic;
      
-     public static ToolMaterial          BRONZE;
-     public static ToolMaterial          MAGIC;
-     public static ToolMaterial          STEEL;
+     public static EnchantmentDelta      enchant;
      
      
      
      
      public static void load ()
      {
-          /**BRONZE = new ToolMaterial(new Object[]
-          { "bronze", 0xd3b838, "ingotBronze", true, true, false }, new Object[]
-          { 2, 418, 9.0F, 2.0F, 22 }, null);
-          MAGIC = new ToolMaterial(new Object[]
-          { "magic", 0x7340ad, "ingotMagic", true, true, true }, new Object[]
-          { 3, 205, 12.0F, 1.0F, 44 }, null);
-          STEEL = new ToolMaterial(new Object[]
-          { "steel", 0x637080, "ingotSteel", true, true, false }, new Object[]
-          { 4, 1111, 4.0F, 3.0F, 12 }, new Object[]
-          { 33, new int[]
-          { 3, 8, 6, 3 }, 10 });*/
-          
           ingotCopper = new ItemIngot("copper");
           ingotTin = new ItemIngot("tin");
           ingotBronze = new ItemIngot("bronze");
@@ -106,6 +94,8 @@ public class EAContent
           MinecraftForge.setBlockHarvestLevel(blockTin, "pickaxe", 1);
           MinecraftForge.setBlockHarvestLevel(blockBronze, "pickaxe", 1);
           MinecraftForge.setBlockHarvestLevel(blockMagic, "pickaxe", 1);
+          
+          enchant = new EnchEnchanted("enchant", 999, EnumEnchantmentType.all);
           
           OreDictionary.registerOre("ingotCopper", EAContent.ingotCopper);
           OreDictionary.registerOre("ingotTin", EAContent.ingotTin);

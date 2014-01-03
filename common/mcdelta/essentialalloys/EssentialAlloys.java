@@ -4,13 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import mcdelta.core.ModDelta;
-import mcdelta.core.enchant.EnchantmentDelta;
-import mcdelta.essentialalloys.enchant.EnchEnchanted;
 import mcdelta.essentialalloys.event.EventBlockBreakEA;
 import mcdelta.essentialalloys.proxy.EACommonProxy;
 import mcdelta.essentialalloys.world.GeneratorOres;
 import net.minecraft.block.Block;
-import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -45,8 +42,6 @@ public class EssentialAlloys extends ModDelta
      
      public static Map<Block, ItemStack> crusherRecipes   = new HashMap<Block, ItemStack>();
      public static Map<Block, ItemStack> explosionRecipes = new HashMap<Block, ItemStack>();
-     
-     public static EnchantmentDelta      enchant;
      
      
      
@@ -123,8 +118,6 @@ public class EssentialAlloys extends ModDelta
           GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EAContent.blockMagic), "xxx", "xxx", "xxx", 'x', "ingotMagic"));
           
           GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EAContent.ingotSteel), "xxx", "xxx", "xxx", 'x', "nuggetSteel"));
-          
-          enchant = new EnchEnchanted("enchant", 999, EnumEnchantmentType.all);
           
           GameRegistry.registerWorldGenerator(new GeneratorOres());
           

@@ -71,6 +71,8 @@ public class EssentialAlloys extends ModDelta
      public void preInit (final FMLPreInitializationEvent event)
      {
           init(event);
+          
+          EAContent.load();
      }
      
      
@@ -78,7 +80,7 @@ public class EssentialAlloys extends ModDelta
      
      @EventHandler
      public void load (final FMLInitializationEvent event)
-     {
+     {   
           OreDictionary.registerOre("ingotCopper", ItemEA.ingotCopper);
           OreDictionary.registerOre("ingotTin", ItemEA.ingotTin);
           OreDictionary.registerOre("ingotBronze", ItemEA.ingotBronze);

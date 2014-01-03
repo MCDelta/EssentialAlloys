@@ -2,6 +2,7 @@ package mcdelta.essentialalloys.item;
 
 import java.util.Arrays;
 
+import mcdelta.essentialalloys.EAContent;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -62,13 +63,13 @@ public class ItemDust extends ItemEA
      @Override
      public void onUpdate (final ItemStack stack, final World world, final Entity entity, final int i, final boolean b)
      {
-          if (this == dustGold && stack.isItemEnchanted() && entity instanceof EntityPlayer)
+          if (this == EAContent.dustGold && stack.isItemEnchanted() && entity instanceof EntityPlayer)
           {
                final EntityPlayer player = (EntityPlayer) entity;
                
                final int slot = Arrays.asList(player.inventory.mainInventory).lastIndexOf(stack);
                
-               player.inventory.setInventorySlotContents(slot, new ItemStack(dustGold, stack.stackSize));
+               player.inventory.setInventorySlotContents(slot, new ItemStack(EAContent.dustGold, stack.stackSize));
           }
      }
      

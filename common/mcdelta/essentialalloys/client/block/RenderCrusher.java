@@ -4,7 +4,7 @@ import mcdelta.core.assets.Assets;
 import mcdelta.core.assets.client.RenderAssets;
 import mcdelta.core.assets.world.BlockShapes;
 import mcdelta.core.assets.world.Position;
-import mcdelta.essentialalloys.block.BlockEA;
+import mcdelta.essentialalloys.EAContent;
 import mcdelta.essentialalloys.block.tileentity.TileEntityCrusher;
 import mcdelta.essentialalloys.proxy.EAClientProxy;
 import net.minecraft.block.Block;
@@ -26,7 +26,7 @@ public class RenderCrusher implements ISimpleBlockRenderingHandler
           renderer.setRenderBounds(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
           this.renderBlockItem(renderer, block, 10);
           
-          renderer.setOverrideBlockTexture(BlockEA.crusher.studIcon);
+          renderer.setOverrideBlockTexture(EAContent.crusher.studIcon);
           
           final float[] arr1 = BlockShapes.crusherHeadThingies(EnumFacing.UP, 0);
           renderer.setRenderBounds(arr1[0], arr1[1], arr1[2], arr1[3], arr1[4], arr1[5]);
@@ -93,7 +93,7 @@ public class RenderCrusher implements ISimpleBlockRenderingHandler
           
           RenderAssets.rotateSidedRenderer(renderer, face);
           
-          if (!BlockEA.crusher.isExtended(pos) && ((TileEntityCrusher) pos.getTile()).extend == 0)
+          if (!EAContent.crusher.isExtended(pos) && ((TileEntityCrusher) pos.getTile()).extend == 0)
           {
                if (renderer.hasOverrideBlockTexture())
                {
@@ -109,7 +109,7 @@ public class RenderCrusher implements ISimpleBlockRenderingHandler
                
                renderer.renderAllFaces = true;
                
-               renderer.setOverrideBlockTexture(BlockEA.crusher.studIcon);
+               renderer.setOverrideBlockTexture(EAContent.crusher.studIcon);
                
                final float[] arr2 = BlockShapes.crusherHeadThingies(face, 0);
                renderer.setRenderBounds(arr2[0], arr2[1], arr2[2], arr2[3], arr2[4], arr2[5]);

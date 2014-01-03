@@ -5,7 +5,7 @@ import java.util.List;
 import mcdelta.core.assets.Assets;
 import mcdelta.core.assets.world.Position;
 import mcdelta.core.block.tileentity.TileEntityDelta;
-import mcdelta.essentialalloys.block.BlockEA;
+import mcdelta.essentialalloys.EAContent;
 import mcdelta.essentialalloys.data.NBTTags;
 import mcdelta.essentialalloys.network.PacketCrusherPower;
 import net.minecraft.block.Block;
@@ -57,7 +57,7 @@ public class TileEntityCrusher extends TileEntityDelta
                this.power = 100;
                this.checkForPower = false;
                
-               BlockEA.crusher.doThings(getPosition());
+               EAContent.crusher.doThings(getPosition());
           }
           if (this.checkForPower)
           {
@@ -98,7 +98,7 @@ public class TileEntityCrusher extends TileEntityDelta
                          tile.furnaceCookTime = 0;
                     }
                }
-               BlockEA.crusher.doThings(getPosition());
+               EAContent.crusher.doThings(getPosition());
                
                if (Assets.isServer())
                {
@@ -137,7 +137,7 @@ public class TileEntityCrusher extends TileEntityDelta
                     
                     if (this.extend == 0)
                     {
-                         BlockEA.crusher.finishRetraction(new Position(worldObj, xCoord, yCoord, zCoord));
+                         EAContent.crusher.finishRetraction(new Position(worldObj, xCoord, yCoord, zCoord));
                          this.cooldown = 5;
                          return;
                     }
@@ -148,7 +148,7 @@ public class TileEntityCrusher extends TileEntityDelta
                     
                     if (this.extend == 0)
                     {
-                         BlockEA.crusher.finishExtension(new Position(worldObj, xCoord, yCoord, zCoord));
+                         EAContent.crusher.finishExtension(new Position(worldObj, xCoord, yCoord, zCoord));
                          this.cooldown = 5;
                          return;
                     }

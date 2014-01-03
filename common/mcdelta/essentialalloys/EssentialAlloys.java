@@ -6,9 +6,7 @@ import java.util.Map;
 import mcdelta.core.ModDelta;
 import mcdelta.core.material.ToolMaterial;
 import mcdelta.core.special.enchant.EnchantmentDelta;
-import mcdelta.essentialalloys.block.BlockEA;
 import mcdelta.essentialalloys.event.EventBlockBreakEA;
-import mcdelta.essentialalloys.item.ItemEA;
 import mcdelta.essentialalloys.proxy.EACommonProxy;
 import mcdelta.essentialalloys.special.enchant.EnchEnchanted;
 import mcdelta.essentialalloys.world.GeneratorOres;
@@ -18,7 +16,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import cpw.mods.fml.common.Mod;
@@ -80,43 +77,23 @@ public class EssentialAlloys extends ModDelta
      
      @EventHandler
      public void load (final FMLInitializationEvent event)
-     {   
-          OreDictionary.registerOre("ingotCopper", ItemEA.ingotCopper);
-          OreDictionary.registerOre("ingotTin", ItemEA.ingotTin);
-          OreDictionary.registerOre("ingotBronze", ItemEA.ingotBronze);
-          OreDictionary.registerOre("ingotMagic", ItemEA.ingotMagic);
-          OreDictionary.registerOre("ingotSteel", ItemEA.ingotSteel);
-          
-          OreDictionary.registerOre("storageCopper", BlockEA.blockCopper);
-          OreDictionary.registerOre("storageTin", BlockEA.blockTin);
-          OreDictionary.registerOre("storageBronze", BlockEA.blockBronze);
-          OreDictionary.registerOre("storageMagic", BlockEA.blockMagic);
-          
-          OreDictionary.registerOre("dustCopper", ItemEA.dustCopper);
-          OreDictionary.registerOre("dustTin", ItemEA.dustTin);
-          OreDictionary.registerOre("dustBronze", ItemEA.dustBronze);
-          OreDictionary.registerOre("dustMagic", ItemEA.dustMagic);
-          OreDictionary.registerOre("dustIron", ItemEA.dustIron);
-          OreDictionary.registerOre("dustGold", ItemEA.dustGold);
-          
-          OreDictionary.registerOre("nuggetSteel", ItemEA.nuggetSteel);
-          
-          explosionRecipes.put(Block.oreIron, new ItemStack(ItemEA.dustIron, 3));
-          explosionRecipes.put(Block.oreGold, new ItemStack(ItemEA.dustGold, 3));
-          explosionRecipes.put(BlockEA.oreCopper, new ItemStack(ItemEA.dustCopper, 3));
-          explosionRecipes.put(BlockEA.oreTin, new ItemStack(ItemEA.dustTin, 3));
+     {    
+          explosionRecipes.put(Block.oreIron, new ItemStack(EAContent.dustIron, 3));
+          explosionRecipes.put(Block.oreGold, new ItemStack(EAContent.dustGold, 3));
+          explosionRecipes.put(EAContent.oreCopper, new ItemStack(EAContent.dustCopper, 3));
+          explosionRecipes.put(EAContent.oreTin, new ItemStack(EAContent.dustTin, 3));
           explosionRecipes.put(Block.oreNetherQuartz, new ItemStack(Item.netherQuartz, 6));
           
-          crusherRecipes.put(Block.oreIron, new ItemStack(ItemEA.dustIron, 2));
-          crusherRecipes.put(Block.oreGold, new ItemStack(ItemEA.dustGold, 2));
-          crusherRecipes.put(BlockEA.oreCopper, new ItemStack(ItemEA.dustCopper, 2));
-          crusherRecipes.put(BlockEA.oreTin, new ItemStack(ItemEA.dustTin, 2));
+          crusherRecipes.put(Block.oreIron, new ItemStack(EAContent.dustIron, 2));
+          crusherRecipes.put(Block.oreGold, new ItemStack(EAContent.dustGold, 2));
+          crusherRecipes.put(EAContent.oreCopper, new ItemStack(EAContent.dustCopper, 2));
+          crusherRecipes.put(EAContent.oreTin, new ItemStack(EAContent.dustTin, 2));
           
-          crusherRecipes.put(Block.blockIron, new ItemStack(ItemEA.dustIron, 9));
-          crusherRecipes.put(Block.blockGold, new ItemStack(ItemEA.dustGold, 9));
-          crusherRecipes.put(BlockEA.blockCopper, new ItemStack(ItemEA.dustCopper, 9));
-          crusherRecipes.put(BlockEA.blockTin, new ItemStack(ItemEA.dustTin, 9));
-          crusherRecipes.put(BlockEA.blockBronze, new ItemStack(ItemEA.dustBronze, 9));
+          crusherRecipes.put(Block.blockIron, new ItemStack(EAContent.dustIron, 9));
+          crusherRecipes.put(Block.blockGold, new ItemStack(EAContent.dustGold, 9));
+          crusherRecipes.put(EAContent.blockCopper, new ItemStack(EAContent.dustCopper, 9));
+          crusherRecipes.put(EAContent.blockTin, new ItemStack(EAContent.dustTin, 9));
+          crusherRecipes.put(EAContent.blockBronze, new ItemStack(EAContent.dustBronze, 9));
           
           crusherRecipes.put(Block.oreLapis, new ItemStack(Item.dyePowder, 8, 4));
           crusherRecipes.put(Block.oreRedstone, new ItemStack(Item.redstone, 8));
@@ -129,36 +106,36 @@ public class EssentialAlloys extends ModDelta
           crusherRecipes.put(Block.gravel, new ItemStack(Item.flint, 2));
           crusherRecipes.put(Block.cobblestone, new ItemStack(Block.sand));
           
-          FurnaceRecipes.smelting().addSmelting(BlockEA.blockCopper.blockID, new ItemStack(ItemEA.ingotCopper), 0.7F);
-          FurnaceRecipes.smelting().addSmelting(BlockEA.blockTin.blockID, new ItemStack(ItemEA.ingotTin), 0.7F);
+          FurnaceRecipes.smelting().addSmelting(EAContent.blockCopper.blockID, new ItemStack(EAContent.ingotCopper), 0.7F);
+          FurnaceRecipes.smelting().addSmelting(EAContent.blockTin.blockID, new ItemStack(EAContent.ingotTin), 0.7F);
           
-          FurnaceRecipes.smelting().addSmelting(ItemEA.dustBronze.itemID, new ItemStack(ItemEA.ingotBronze), 1.0F);
-          FurnaceRecipes.smelting().addSmelting(ItemEA.dustGold.itemID, new ItemStack(Item.ingotGold), 0.5F);
-          FurnaceRecipes.smelting().addSmelting(ItemEA.dustCopper.itemID, new ItemStack(ItemEA.ingotCopper), 0.35F);
-          FurnaceRecipes.smelting().addSmelting(ItemEA.dustTin.itemID, new ItemStack(ItemEA.ingotTin), 0.35F);
-          FurnaceRecipes.smelting().addSmelting(ItemEA.dustIron.itemID, new ItemStack(Item.ingotIron), 0.35F);
-          FurnaceRecipes.smelting().addSmelting(ItemEA.dustMagic.itemID, new ItemStack(ItemEA.ingotMagic), 2.0F);
+          FurnaceRecipes.smelting().addSmelting(EAContent.dustBronze.itemID, new ItemStack(EAContent.ingotBronze), 1.0F);
+          FurnaceRecipes.smelting().addSmelting(EAContent.dustGold.itemID, new ItemStack(Item.ingotGold), 0.5F);
+          FurnaceRecipes.smelting().addSmelting(EAContent.dustCopper.itemID, new ItemStack(EAContent.ingotCopper), 0.35F);
+          FurnaceRecipes.smelting().addSmelting(EAContent.dustTin.itemID, new ItemStack(EAContent.ingotTin), 0.35F);
+          FurnaceRecipes.smelting().addSmelting(EAContent.dustIron.itemID, new ItemStack(Item.ingotIron), 0.35F);
+          FurnaceRecipes.smelting().addSmelting(EAContent.dustMagic.itemID, new ItemStack(EAContent.ingotMagic), 2.0F);
           
-          GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemEA.dustBronze), new Object[]
+          GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(EAContent.dustBronze), new Object[]
           { "dustTin", "dustCopper" }));
           
-          GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemEA.nuggetSteel, 9), new Object[]
+          GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(EAContent.nuggetSteel, 9), new Object[]
           { "ingotSteel" }));
-          GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemEA.ingotBronze, 9), new Object[]
+          GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(EAContent.ingotBronze, 9), new Object[]
           { "storageBronze" }));
-          GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemEA.ingotCopper, 9), new Object[]
+          GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(EAContent.ingotCopper, 9), new Object[]
           { "storageCopper" }));
-          GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemEA.ingotTin, 9), new Object[]
+          GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(EAContent.ingotTin, 9), new Object[]
           { "storageTin" }));
-          GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemEA.ingotMagic, 9), new Object[]
+          GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(EAContent.ingotMagic, 9), new Object[]
           { "storageMagic" }));
           
-          GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockEA.blockBronze), "xxx", "xxx", "xxx", 'x', "ingotBronze"));
-          GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockEA.blockCopper), "xxx", "xxx", "xxx", 'x', "ingotCopper"));
-          GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockEA.blockTin), "xxx", "xxx", "xxx", 'x', "ingotTin"));
-          GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockEA.blockMagic), "xxx", "xxx", "xxx", 'x', "ingotMagic"));
+          GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EAContent.blockBronze), "xxx", "xxx", "xxx", 'x', "ingotBronze"));
+          GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EAContent.blockCopper), "xxx", "xxx", "xxx", 'x', "ingotCopper"));
+          GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EAContent.blockTin), "xxx", "xxx", "xxx", 'x', "ingotTin"));
+          GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EAContent.blockMagic), "xxx", "xxx", "xxx", 'x', "ingotMagic"));
           
-          GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemEA.ingotSteel), "xxx", "xxx", "xxx", 'x', "nuggetSteel"));
+          GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EAContent.ingotSteel), "xxx", "xxx", "xxx", 'x', "nuggetSteel"));
           
           enchant = new EnchEnchanted("enchant", 999, EnumEnchantmentType.all);
           

@@ -4,7 +4,7 @@ import mcdelta.core.assets.Assets;
 import mcdelta.core.assets.client.RenderAssets;
 import mcdelta.core.assets.world.BlockShapes;
 import mcdelta.core.assets.world.Position;
-import mcdelta.essentialalloys.block.BlockEA;
+import mcdelta.essentialalloys.EAContent;
 import mcdelta.essentialalloys.block.tileentity.TileEntityCrusher;
 import mcdelta.essentialalloys.proxy.EAClientProxy;
 import net.minecraft.block.Block;
@@ -31,7 +31,7 @@ public class RenderCrusherExtension implements ISimpleBlockRenderingHandler
      {
           final EnumFacing face = Assets.getFacing(meta);
           
-          final boolean flag = block == BlockEA.crusherExtMoving;
+          final boolean flag = block == EAContent.crusherExtMoving;
           
           if (renderer.hasOverrideBlockTexture() && !flag)
           {
@@ -111,13 +111,13 @@ public class RenderCrusherExtension implements ISimpleBlockRenderingHandler
           renderer.uvRotateNorth = 0;
           renderer.uvRotateTop = 0;
           
-          renderer.setOverrideBlockTexture(BlockEA.crusher.shaftIcon);
+          renderer.setOverrideBlockTexture(EAContent.crusher.shaftIcon);
           
           final float[] arr1 = BlockShapes.extensionShaft(face, shift, f);
           renderer.setRenderBounds(arr1[0], arr1[1], arr1[2], arr1[3], arr1[4], arr1[5]);
           renderer.renderStandardBlock(block, x, y, z);
           
-          renderer.setOverrideBlockTexture(BlockEA.crusher.studIcon);
+          renderer.setOverrideBlockTexture(EAContent.crusher.studIcon);
           
           final float[] arr2 = BlockShapes.crusherHeadThingies(face, 0);
           renderer.setRenderBounds(arr2[0], arr2[1], arr2[2], arr2[3], arr2[4], arr2[5]);

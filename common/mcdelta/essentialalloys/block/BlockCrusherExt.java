@@ -7,6 +7,7 @@ import mcdelta.core.assets.world.BlockData;
 import mcdelta.core.assets.world.BlockShapes;
 import mcdelta.core.assets.world.Position;
 import mcdelta.core.block.BlockSided;
+import mcdelta.essentialalloys.EAContent;
 import mcdelta.essentialalloys.EssentialAlloys;
 import mcdelta.essentialalloys.proxy.EAClientProxy;
 import net.minecraft.block.material.Material;
@@ -52,7 +53,7 @@ public class BlockCrusherExt extends BlockSided
      @SideOnly (Side.CLIENT)
      public Icon getIcon (final int side, final int meta)
      {
-          return BlockEA.crusher.getIcon(side, meta, false);
+          return EAContent.crusher.getIcon(side, meta, false);
      }
      
      
@@ -81,7 +82,7 @@ public class BlockCrusherExt extends BlockSided
           {
                return false;
           }
-          if (pos.copy().move(Assets.invertFace(getFacing(pos.getMeta()))).getBlockData().equals(new BlockData(BlockEA.crusher, pos.getMeta())))
+          if (pos.copy().move(Assets.invertFace(getFacing(pos.getMeta()))).getBlockData().equals(new BlockData(EAContent.crusher, pos.getMeta())))
           {
                return true;
           }
@@ -190,6 +191,6 @@ public class BlockCrusherExt extends BlockSided
      @Override
      public int idPicked (final World world, final int x, final int y, final int z)
      {
-          return BlockEA.crusher.blockID;
+          return EAContent.crusher.blockID;
      }
 }

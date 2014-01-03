@@ -7,6 +7,7 @@ import mcdelta.core.assets.world.BlockData;
 import mcdelta.core.assets.world.BlockShapes;
 import mcdelta.core.assets.world.Position;
 import mcdelta.core.block.BlockSided;
+import mcdelta.essentialalloys.EAContent;
 import mcdelta.essentialalloys.EssentialAlloys;
 import mcdelta.essentialalloys.block.tileentity.TileEntityCrusher;
 import mcdelta.essentialalloys.network.PacketCrusherExtend;
@@ -146,7 +147,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           
           final EnumFacing face = Assets.getFacing(pos.getMeta());
           
-          if ((TileEntityCrusher) pos.getTile() != null && (BlockEA.crusher.isExtended(pos) || ((TileEntityCrusher) pos.getTile()).extend != 0))
+          if ((TileEntityCrusher) pos.getTile() != null && (EAContent.crusher.isExtended(pos) || ((TileEntityCrusher) pos.getTile()).extend != 0))
           {
                setBlockBounds(BlockShapes.crusherNonExtended(face));
           }
@@ -251,7 +252,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           {
                return false;
           }
-          return pos.move(Assets.getFacing(pos.getMeta())).getBlockData().equals(new BlockData(BlockEA.crusherExt, pos.getMeta())) || pos.move(Assets.getFacing(pos.getMeta())).getBlockData().equals(new BlockData(BlockEA.crusherExtMoving, pos.getMeta()));
+          return pos.move(Assets.getFacing(pos.getMeta())).getBlockData().equals(new BlockData(EAContent.crusherExt, pos.getMeta())) || pos.move(Assets.getFacing(pos.getMeta())).getBlockData().equals(new BlockData(EAContent.crusherExtMoving, pos.getMeta()));
      }
      
      
@@ -278,7 +279,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           }
           ((TileEntityCrusher) pos.getTile()).extend = 3;
           
-          Assets.placeBlock(pos.move(Assets.getFacing(pos.getMeta())), new BlockData(BlockEA.crusherExtMoving, pos.getMeta()));
+          Assets.placeBlock(pos.move(Assets.getFacing(pos.getMeta())), new BlockData(EAContent.crusherExtMoving, pos.getMeta()));
           
           return true;
      }
@@ -288,7 +289,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
      
      public void finishExtension (final Position pos)
      {
-          Assets.placeBlock(pos.move(Assets.getFacing(pos.getMeta())), new BlockData(BlockEA.crusherExt, pos.getMeta()));
+          Assets.placeBlock(pos.move(Assets.getFacing(pos.getMeta())), new BlockData(EAContent.crusherExt, pos.getMeta()));
      }
      
      
@@ -300,7 +301,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           {
                ((TileEntityCrusher) pos.getTile()).extend = -8;
                
-               Assets.placeBlock(pos.move(Assets.getFacing(pos.getMeta())), new BlockData(BlockEA.crusherExtMoving, pos.getMeta()));
+               Assets.placeBlock(pos.move(Assets.getFacing(pos.getMeta())), new BlockData(EAContent.crusherExtMoving, pos.getMeta()));
                
                return true;
           }

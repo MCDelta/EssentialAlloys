@@ -1,12 +1,11 @@
 package mcdelta.essentialalloys.special.enchant;
 
 import mcdelta.core.special.enchant.EnchantmentDelta;
+import mcdelta.essentialalloys.EAContent;
 import mcdelta.essentialalloys.EssentialAlloys;
-import mcdelta.essentialalloys.item.ItemEA;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
 
-//TODO finish
 public class EnchEnchanted extends EnchantmentDelta
 {
      public EnchEnchanted (final String s, final int rarity, final EnumEnchantmentType type)
@@ -65,6 +64,6 @@ public class EnchEnchanted extends EnchantmentDelta
      @Override
      public boolean canApply (final ItemStack stack)
      {
-          return stack.getItem() == ItemEA.dustGold;
+          return stack.getItem() == EAContent.dustGold;
      }
 }

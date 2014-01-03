@@ -2,7 +2,7 @@ package mcdelta.essentialalloys.world;
 
 import java.util.Random;
 
-import mcdelta.essentialalloys.block.BlockEA;
+import mcdelta.essentialalloys.EAContent;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
@@ -20,8 +20,8 @@ public class GeneratorOres implements IWorldGenerator
      
      public GeneratorOres ()
      {
-          this.copperGen = new WorldGenMinable(BlockEA.oreCopper.blockID, 8);
-          this.tinGen = new WorldGenMinable(BlockEA.oreTin.blockID, 8);
+          this.copperGen = new WorldGenMinable(EAContent.oreCopper.blockID, 8);
+          this.tinGen = new WorldGenMinable(EAContent.oreTin.blockID, 8);
      }
      
      

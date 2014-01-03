@@ -24,6 +24,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCrusherExt extends BlockSided
 {
+<<<<<<< HEAD
      @SideOnly (Side.CLIENT)
      public Icon extensionIcon;
      
@@ -193,4 +194,136 @@ public class BlockCrusherExt extends BlockSided
      {
           return EAContent.crusher.blockID;
      }
+=======
+    @SideOnly(Side.CLIENT)
+    public Icon extensionIcon;
+
+    public BlockCrusherExt(final String s)
+    {
+        super(EssentialAlloys.instance, s, Material.piston);
+        setCreativeTab(null);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(final IconRegister register)
+    {
+        extensionIcon = doRegister("crusherExt", register);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Icon getIcon(final int side, final int meta)
+    {
+        return BlockEA.crusher.getIcon(side, meta, false);
+    }
+
+    @Override
+    public void onNeighborBlockChange(final World world, final int x, final int y, final int z, final int par5)
+    {
+        final Position pos = new Position(world, x, y, z);
+
+        if (!canBlockStay(world, x, y, z))
+        {
+            Assets.setToAir(pos);
+        }
+    }
+
+    @Override
+    public boolean canBlockStay(final World world, final int x, final int y, final int z)
+    {
+        final Position pos = new Position(world, x, y, z);
+
+        if (pos.copy().move(Assets.invertFace(getFacing(pos.getMeta()))).getBlockData() == null)
+        {
+            return false;
+        }
+        if (pos.copy().move(Assets.invertFace(getFacing(pos.getMeta()))).getBlockData().equals(new BlockData(BlockEA.crusher, pos.getMeta())))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean canPlaceBlockAt(final World world, final int x, final int y, final int z)
+    {
+        return canBlockStay(world, x, y, z);
+    }
+
+    @Override
+    public void onBlockHarvested(final World world, final int x, final int y, final int z, final int meta, final EntityPlayer player)
+    {
+        super.onBlockHarvested(world, x, y, z, meta, player);
+
+        final Position pos = new Position(world, x, y, z);
+        final Position source = pos.move(Assets.invertFace(Assets.getFacing(pos.getMeta())));
+
+        Assets.breakBlock(source, !player.capabilities.isCreativeMode);
+    }
+
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
+
+    @Override
+    public int getRenderType()
+    {
+        return EAClientProxy.typeCrusherExtension;
+    }
+
+    @Override
+    public void setBlockBoundsBasedOnState(final IBlockAccess world, final int x, final int y, final int z)
+    {
+        final Position pos = new Position(world, x, y, z);
+        final EnumFacing face = Assets.getFacing(pos.getMeta());
+
+        setBlockBounds(BlockShapes.crusherExtension(face, 0));
+    }
+
+    @Override
+    public void addCollisionBoxesToList(final World world, final int x, final int y, final int z, final AxisAlignedBB axis, final List list, final Entity entity)
+    {
+        final Position pos = new Position(world, x, y, z);
+        final EnumFacing face = Assets.getFacing(pos.getMeta());
+
+        float shift = 0.438F;
+
+        switch (face)
+        {
+            case UP:
+            case SOUTH:
+            case WEST:
+                shift *= -1;
+                break;
+            case DOWN:
+                break;
+            case EAST:
+                break;
+            case NORTH:
+                break;
+            default:
+                break;
+        }
+        setBlockBoundsBasedOnState(world, x, y, z);
+        super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+
+        setBlockBounds(BlockShapes.extensionShaft(face, shift, 0));
+        super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
+    }
+
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
+
+    @Override
+    public int idPicked(final World world, final int x, final int y, final int z)
+    {
+        return BlockEA.crusher.blockID;
+    }
+>>>>>>> 5ad34493d08f0ba6f35302fdcfc63d2da091fe08
 }

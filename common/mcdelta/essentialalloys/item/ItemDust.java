@@ -13,6 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemDust extends ItemEA
 {
+<<<<<<< HEAD
      private final boolean magic;
      
      
@@ -82,4 +83,57 @@ public class ItemDust extends ItemEA
      {
           return this.magic;
      }
+=======
+    private final boolean magic;
+
+    public ItemDust(final String name)
+    {
+        this(name, false);
+    }
+
+    public ItemDust(final String name, final boolean magic)
+    {
+        super("dust." + name);
+
+        this.magic = magic;
+        setCreativeTab(CreativeTabs.tabMaterials);
+
+        if (magic)
+        {
+            maxStackSize = 1;
+        }
+    }
+
+    @Override
+    public int getItemEnchantability()
+    {
+        return 1;
+    }
+
+    @Override
+    public boolean isItemTool(final ItemStack stack)
+    {
+        return stack.stackSize == 1;
+    }
+
+    @Override
+    public void onUpdate(final ItemStack stack, final World world, final Entity entity, final int i, final boolean b)
+    {
+        if ((this == dustGold) && stack.isItemEnchanted() && (entity instanceof EntityPlayer))
+        {
+            final EntityPlayer player = (EntityPlayer) entity;
+
+            final int slot = Arrays.asList(player.inventory.mainInventory).lastIndexOf(stack);
+
+            player.inventory.setInventorySlotContents(slot, new ItemStack(dustGold, stack.stackSize));
+        }
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean hasEffect(final ItemStack par1ItemStack, final int pass)
+    {
+        return magic;
+    }
+>>>>>>> 5ad34493d08f0ba6f35302fdcfc63d2da091fe08
 }

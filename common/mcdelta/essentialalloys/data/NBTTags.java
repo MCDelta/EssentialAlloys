@@ -1,4 +1,4 @@
-package mcdelta.essentialalloys.utils.libs;
+package mcdelta.essentialalloys.data;
 
 public class NBTTags
 {

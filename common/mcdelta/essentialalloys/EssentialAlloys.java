@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import mcdelta.core.ModDelta;
-import mcdelta.core.special.enchant.EnchantmentDelta;
+import mcdelta.core.enchant.EnchantmentDelta;
+import mcdelta.essentialalloys.enchant.EnchEnchanted;
 import mcdelta.essentialalloys.event.EventBlockBreakEA;
 import mcdelta.essentialalloys.proxy.EACommonProxy;
-import mcdelta.essentialalloys.special.enchant.EnchEnchanted;
 import mcdelta.essentialalloys.world.GeneratorOres;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnumEnchantmentType;

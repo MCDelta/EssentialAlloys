@@ -1,6 +1,6 @@
-package mcdelta.essentialalloys.special.enchant;
+package mcdelta.essentialalloys.enchant;
 
-import mcdelta.core.special.enchant.EnchantmentDelta;
+import mcdelta.core.enchant.EnchantmentDelta;
 import mcdelta.essentialalloys.EAContent;
 import mcdelta.essentialalloys.EssentialAlloys;
 import net.minecraft.enchantment.EnumEnchantmentType;

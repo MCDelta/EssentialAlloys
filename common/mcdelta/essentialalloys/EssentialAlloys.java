@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import mcdelta.core.ModDelta;
-import mcdelta.core.material.ToolMaterial;
 import mcdelta.core.special.enchant.EnchantmentDelta;
 import mcdelta.essentialalloys.event.EventBlockBreakEA;
 import mcdelta.essentialalloys.proxy.EACommonProxy;
@@ -49,18 +48,6 @@ public class EssentialAlloys extends ModDelta
      
      public static EnchantmentDelta      enchant;
      
-     public static ToolMaterial          BRONZE           = new ToolMaterial(new Object[]
-                                                          { "bronze", 0xd3b838, "ingotBronze", true, true, instance, false }, new Object[]
-                                                          { 2, 418, 9.0F, 2.0F, 22 }, null);
-     public static ToolMaterial          MAGIC            = new ToolMaterial(new Object[]
-                                                          { "magic", 0x7340ad, "ingotMagic", true, true, instance, true }, new Object[]
-                                                          { 3, 205, 12.0F, 1.0F, 44 }, null);
-     public static ToolMaterial          STEEL            = new ToolMaterial(new Object[]
-                                                          { "steel", 0x637080, "ingotSteel", true, true, instance, false }, new Object[]
-                                                          { 4, 1111, 4.0F, 3.0F, 12 }, new Object[]
-                                                          { 33, new int[]
-                                                          { 3, 8, 6, 3 }, 10 });
-     
      
      
      
@@ -77,7 +64,7 @@ public class EssentialAlloys extends ModDelta
      
      @EventHandler
      public void load (final FMLInitializationEvent event)
-     {    
+     {
           explosionRecipes.put(Block.oreIron, new ItemStack(EAContent.dustIron, 3));
           explosionRecipes.put(Block.oreGold, new ItemStack(EAContent.dustGold, 3));
           explosionRecipes.put(EAContent.oreCopper, new ItemStack(EAContent.dustCopper, 3));

@@ -2,6 +2,7 @@ package mcdelta.essentialalloys;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import mcdelta.core.block.BlockDelta;
+import mcdelta.core.material.ToolMaterial;
 import mcdelta.essentialalloys.block.BlockCrusher;
 import mcdelta.essentialalloys.block.BlockCrusherExt;
 import mcdelta.essentialalloys.block.BlockCrusherExtMoving;
@@ -47,11 +48,27 @@ public class EAContent
      public static BlockDelta            blockBronze;
      public static BlockDelta            blockMagic;
      
+     public static ToolMaterial          BRONZE;
+     public static ToolMaterial          MAGIC;
+     public static ToolMaterial          STEEL;
+     
      
      
      
      public static void load ()
      {
+          BRONZE = new ToolMaterial(new Object[]
+          { "bronze", 0xd3b838, "ingotBronze", true, true, EssentialAlloys.instance, false }, new Object[]
+          { 2, 418, 9.0F, 2.0F, 22 }, null);
+          MAGIC = new ToolMaterial(new Object[]
+          { "magic", 0x7340ad, "ingotMagic", true, true, EssentialAlloys.instance, true }, new Object[]
+          { 3, 205, 12.0F, 1.0F, 44 }, null);
+          STEEL = new ToolMaterial(new Object[]
+          { "steel", 0x637080, "ingotSteel", true, true, EssentialAlloys.instance, false }, new Object[]
+          { 4, 1111, 4.0F, 3.0F, 12 }, new Object[]
+          { 33, new int[]
+          { 3, 8, 6, 3 }, 10 });
+          
           ingotCopper = new ItemIngot("copper");
           ingotTin = new ItemIngot("tin");
           ingotBronze = new ItemIngot("bronze");

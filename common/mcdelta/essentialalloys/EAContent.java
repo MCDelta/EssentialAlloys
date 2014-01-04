@@ -138,5 +138,14 @@ public class EAContent implements IContent
      {
           
      }
+
+
+
+
+     @Override
+     public void addMaterialBasedRecipes (ItemMaterial tmp)
+     {
+          
+     }
      
 }

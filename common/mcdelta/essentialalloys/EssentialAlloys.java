@@ -67,8 +67,6 @@ public class EssentialAlloys extends ModDelta
      @EventHandler
      public void load (final FMLInitializationEvent event)
      {
-          this.content().addRecipes();
-          
           explosionRecipes.put(Block.oreIron, new ItemStack(EAContent.dustIron, 3));
           explosionRecipes.put(Block.oreGold, new ItemStack(EAContent.dustGold, 3));
           explosionRecipes.put(EAContent.oreCopper, new ItemStack(EAContent.dustCopper, 3));

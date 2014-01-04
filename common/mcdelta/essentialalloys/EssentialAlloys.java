@@ -47,6 +47,15 @@ public class EssentialAlloys extends ModDelta
      
      
      
+     @Override
+     public void deltaInit (FMLPreInitializationEvent event)
+     {
+          this.init(event);
+     }
+     
+     
+     
+     
      @EventHandler
      public void preInit (final FMLPreInitializationEvent event)
      {

@@ -7,11 +7,9 @@ import java.util.Random;
 import mcdelta.core.assets.Assets;
 import mcdelta.core.assets.world.Position;
 import mcdelta.core.logging.Logger;
-import mcdelta.essentialalloys.block.tileentity.TileHotPlate;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public class BlockHotPlate extends BlockEA
@@ -167,7 +165,7 @@ public class BlockHotPlate extends BlockEA
           if (Assets.isServer())
           {
                final Random rand = new Random();
-               final int fuel = this.getFuel(pos, dimensions);
+               final int fuel = getFuel(pos, dimensions);
                
                if (fuel != 0)
                {
@@ -197,9 +195,9 @@ public class BlockHotPlate extends BlockEA
      public boolean onBlockActivated (final World world, final int x, final int y, final int z, final EntityPlayer player, final int side, final float offsetX, final float offsetY, final float offsetZ)
      {
           final Position pos = new Position(world, x, y, z);
-          final int[] dimensions = this.getDimensions(pos);
-          final int fuel = this.getFuel(pos, dimensions);
-          final boolean removed = this.removeRandomFuel(pos, dimensions);
+          final int[] dimensions = getDimensions(pos);
+          final int fuel = getFuel(pos, dimensions);
+          final boolean removed = removeRandomFuel(pos, dimensions);
           
           if (Assets.isServer())
           {
@@ -211,11 +209,8 @@ public class BlockHotPlate extends BlockEA
      }
      
      
-     
-     
-     /**@Override
-     public TileEntity createNewTileEntity (World world)
-     {
-          return new TileHotPlate();
-     }*/
+     /**
+      * @Override public TileEntity createNewTileEntity (World world) { return
+      *           new TileHotPlate(); }
+      */
 }

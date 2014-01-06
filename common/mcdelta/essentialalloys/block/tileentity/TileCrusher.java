@@ -31,13 +31,13 @@ public class TileCrusher extends TileEntityDelta
      {
           super.updateEntity();
           
-          if (this.getBlockType() == null)
+          if (getBlockType() == null)
           {
                return;
           }
           
-          this.updateExtensions();
-          this.updatePower();
+          updateExtensions();
+          updatePower();
      }
      
      
@@ -45,29 +45,29 @@ public class TileCrusher extends TileEntityDelta
      
      private void updatePower ()
      {
-          if (this.power != 0)
+          if (power != 0)
           {
-               this.checkForPower = true;
+               checkForPower = true;
           }
-          if (this.power == 98)
+          if (power == 98)
           {
-               Assets.updateBlock(this.getPosition());
+               Assets.updateBlock(getPosition());
           }
-          if (this.power >= 100)
+          if (power >= 100)
           {
-               this.power = 100;
-               this.checkForPower = false;
+               power = 100;
+               checkForPower = false;
                
-               EAContent.crusher.doThings(this.getPosition());
+               EAContent.crusher.doThings(getPosition());
           }
-          if (this.checkForPower)
+          if (checkForPower)
           {
-               final Position pos = this.getPosition();
+               final Position pos = getPosition();
                
                final List<Position> idleFurnaces = Assets.checkAdjacentBlocks(Block.furnaceIdle, pos);
                final List<Position> burningFurnaces = Assets.checkAdjacentBlocks(Block.furnaceBurning, pos);
                
-               if (this.power == 0)
+               if (power == 0)
                {
                     if (!idleFurnaces.isEmpty())
                     {
@@ -81,10 +81,10 @@ public class TileCrusher extends TileEntityDelta
                               {
                                    tile.decrStackSize(1, 1);
                                    tile.furnaceBurnTime = TileEntityFurnace.getItemBurnTime(fuel);
-                                   BlockFurnace.updateFurnaceBlockState(true, this.worldObj, furnace.x, furnace.y, furnace.z);
+                                   BlockFurnace.updateFurnaceBlockState(true, worldObj, furnace.x, furnace.y, furnace.z);
                                    tile.onInventoryChanged();
                                    
-                                   this.power++;
+                                   power++;
                               }
                          }
                     }
@@ -93,20 +93,20 @@ public class TileCrusher extends TileEntityDelta
                {
                     for (final Position furnace : burningFurnaces)
                     {
-                         this.power++;
+                         power++;
                          
                          final TileEntityFurnace tile = (TileEntityFurnace) furnace.getTile();
                          tile.furnaceCookTime = 0;
                     }
                }
-               EAContent.crusher.doThings(this.getPosition());
+               EAContent.crusher.doThings(getPosition());
                
                if (Assets.isServer())
                {
-                    PacketDispatcher.sendPacketToAllAround(pos.x, pos.y, pos.z, 20, this.worldObj.provider.dimensionId, Assets.populatePacket(new PacketCrusherPower(this.power, pos.x, pos.y, pos.z)));
+                    PacketDispatcher.sendPacketToAllAround(pos.x, pos.y, pos.z, 20, worldObj.provider.dimensionId, Assets.populatePacket(new PacketCrusherPower(power, pos.x, pos.y, pos.z)));
                }
           }
-          this.checkForPower = false;
+          checkForPower = false;
      }
      
      
@@ -114,43 +114,43 @@ public class TileCrusher extends TileEntityDelta
      
      private void updateExtensions ()
      {
-          if (this.cooldown != 0)
+          if (cooldown != 0)
           {
-               this.cooldown--;
+               cooldown--;
           }
-          if (this.extend == 0 && this.extendTotal != 0)
+          if (extend == 0 && extendTotal != 0)
           {
-               this.extendTotal = 0;
+               extendTotal = 0;
           }
-          if (this.extend != 0)
+          if (extend != 0)
           {
-               if (this.extendTotal == 0)
+               if (extendTotal == 0)
                {
-                    this.extendTotal = this.extend;
+                    extendTotal = extend;
                }
-               final Position pos = new Position(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+               final Position pos = new Position(worldObj, xCoord, yCoord, zCoord);
                
                Assets.updateBlock(pos.move(Assets.getFacing(pos.getMeta())));
                
-               if (this.extend < 0)
+               if (extend < 0)
                {
-                    this.extend++;
+                    extend++;
                     
-                    if (this.extend == 0)
+                    if (extend == 0)
                     {
-                         EAContent.crusher.finishRetraction(new Position(this.worldObj, this.xCoord, this.yCoord, this.zCoord));
-                         this.cooldown = 5;
+                         EAContent.crusher.finishRetraction(new Position(worldObj, xCoord, yCoord, zCoord));
+                         cooldown = 5;
                          return;
                     }
                }
                else
                {
-                    this.extend--;
+                    extend--;
                     
-                    if (this.extend == 0)
+                    if (extend == 0)
                     {
-                         EAContent.crusher.finishExtension(new Position(this.worldObj, this.xCoord, this.yCoord, this.zCoord));
-                         this.cooldown = 5;
+                         EAContent.crusher.finishExtension(new Position(worldObj, xCoord, yCoord, zCoord));
+                         cooldown = 5;
                          return;
                     }
                }
@@ -165,11 +165,11 @@ public class TileCrusher extends TileEntityDelta
      {
           super.writeToNBT(nbtTag);
           
-          nbtTag.setInteger(NBTTags.CRUSHER_STATUS, this.extend);
-          nbtTag.setInteger(NBTTags.CRUSHER_STATUS_TOTAL, this.extendTotal);
-          nbtTag.setInteger(NBTTags.CRUSHER_COOLDOWN, this.cooldown);
-          nbtTag.setInteger(NBTTags.CRUSHER_POWER, this.power);
-          nbtTag.setBoolean(NBTTags.CRUSHER_CHECK, this.checkForPower);
+          nbtTag.setInteger(NBTTags.CRUSHER_STATUS, extend);
+          nbtTag.setInteger(NBTTags.CRUSHER_STATUS_TOTAL, extendTotal);
+          nbtTag.setInteger(NBTTags.CRUSHER_COOLDOWN, cooldown);
+          nbtTag.setInteger(NBTTags.CRUSHER_POWER, power);
+          nbtTag.setBoolean(NBTTags.CRUSHER_CHECK, checkForPower);
      }
      
      
@@ -180,10 +180,10 @@ public class TileCrusher extends TileEntityDelta
      {
           super.readFromNBT(nbtTag);
           
-          this.extend = nbtTag.getInteger(NBTTags.CRUSHER_STATUS);
-          this.extendTotal = nbtTag.getInteger(NBTTags.CRUSHER_STATUS_TOTAL);
-          this.cooldown = nbtTag.getInteger(NBTTags.CRUSHER_COOLDOWN);
-          this.power = nbtTag.getInteger(NBTTags.CRUSHER_POWER);
-          this.checkForPower = nbtTag.getBoolean(NBTTags.CRUSHER_CHECK);
+          extend = nbtTag.getInteger(NBTTags.CRUSHER_STATUS);
+          extendTotal = nbtTag.getInteger(NBTTags.CRUSHER_STATUS_TOTAL);
+          cooldown = nbtTag.getInteger(NBTTags.CRUSHER_COOLDOWN);
+          power = nbtTag.getInteger(NBTTags.CRUSHER_POWER);
+          checkForPower = nbtTag.getBoolean(NBTTags.CRUSHER_CHECK);
      }
 }

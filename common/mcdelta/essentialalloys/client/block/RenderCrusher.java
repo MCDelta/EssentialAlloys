@@ -24,25 +24,25 @@ public class RenderCrusher implements ISimpleBlockRenderingHandler
      {
           final float[] arr = BlockShapes.crusherExtended(EnumFacing.UP);
           renderer.setRenderBounds(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
-          this.renderBlockItem(renderer, block, 10);
+          renderBlockItem(renderer, block, 10);
           
           renderer.setOverrideBlockTexture(EAContent.crusher.studIcon);
           
           final float[] arr1 = BlockShapes.crusherHeadThingies(EnumFacing.UP, 0);
           renderer.setRenderBounds(arr1[0], arr1[1], arr1[2], arr1[3], arr1[4], arr1[5]);
-          this.renderBlockItem(renderer, block, 1);
+          renderBlockItem(renderer, block, 1);
           
           final float[] arr2 = BlockShapes.crusherHeadThingies(EnumFacing.UP, 1);
           renderer.setRenderBounds(arr2[0], arr2[1], arr2[2], arr2[3], arr2[4], arr2[5]);
-          this.renderBlockItem(renderer, block, 1);
+          renderBlockItem(renderer, block, 1);
           
           final float[] arr3 = BlockShapes.crusherHeadThingies(EnumFacing.UP, 2);
           renderer.setRenderBounds(arr3[0], arr3[1], arr3[2], arr3[3], arr3[4], arr3[5]);
-          this.renderBlockItem(renderer, block, 1);
+          renderBlockItem(renderer, block, 1);
           
           final float[] arr4 = BlockShapes.crusherHeadThingies(EnumFacing.UP, 3);
           renderer.setRenderBounds(arr4[0], arr4[1], arr4[2], arr4[3], arr4[4], arr4[5]);
-          this.renderBlockItem(renderer, block, 1);
+          renderBlockItem(renderer, block, 1);
           
           renderer.clearOverrideBlockTexture();
      }

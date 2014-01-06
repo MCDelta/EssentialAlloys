@@ -18,7 +18,7 @@ public class BlockCrusherExtMoving extends BlockCrusherExt
      {
           super(s);
           
-          this.setBlockUnbreakable();
+          setBlockUnbreakable();
      }
      
      
@@ -76,7 +76,7 @@ public class BlockCrusherExtMoving extends BlockCrusherExt
                     default:
                          break;
                }
-               this.setBlockBoundsBasedOnState(world, x, y, z);
+               setBlockBoundsBasedOnState(world, x, y, z);
                super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
                
                this.setBlockBounds(BlockShapes.extensionShaft(face, shift, f));

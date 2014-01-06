@@ -60,12 +60,12 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
      {
           super.registerIcons(register);
           
-          this.sideIcon = this.doRegister(this.name + "_side_off", register);
-          this.sideIconOn = this.doRegister(this.name + "_side_on", register);
-          this.insideIcon = this.doRegister(this.name + "_inside", register);
-          this.studIcon = Block.blockNetherQuartz.getIcon(0, 0);
-          this.shaftIcon = Block.cobblestone.getIcon(2, 0);
-          this.blockIcon = Block.brick.getIcon(0, 0);
+          sideIcon = doRegister(name + "_side_off", register);
+          sideIconOn = doRegister(name + "_side_on", register);
+          insideIcon = doRegister(name + "_inside", register);
+          studIcon = Block.blockNetherQuartz.getIcon(0, 0);
+          shaftIcon = Block.cobblestone.getIcon(2, 0);
+          blockIcon = Block.brick.getIcon(0, 0);
      }
      
      
@@ -90,39 +90,39 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           {
                final EnumFacing face = Assets.getFacing(meta);
                
-               final boolean b1 = this.minX == BlockShapes.crusherNonExtended(face)[0];
-               final boolean b2 = this.minY == BlockShapes.crusherNonExtended(face)[1];
-               final boolean b3 = this.minZ == BlockShapes.crusherNonExtended(face)[2];
+               final boolean b1 = minX == BlockShapes.crusherNonExtended(face)[0];
+               final boolean b2 = minY == BlockShapes.crusherNonExtended(face)[1];
+               final boolean b3 = minZ == BlockShapes.crusherNonExtended(face)[2];
                
-               final boolean b4 = this.maxX == BlockShapes.crusherNonExtended(face)[3];
-               final boolean b5 = this.maxY == BlockShapes.crusherNonExtended(face)[4];
-               final boolean b6 = this.maxZ == BlockShapes.crusherNonExtended(face)[5];
+               final boolean b4 = maxX == BlockShapes.crusherNonExtended(face)[3];
+               final boolean b5 = maxY == BlockShapes.crusherNonExtended(face)[4];
+               final boolean b6 = maxZ == BlockShapes.crusherNonExtended(face)[5];
                
                final boolean b = !b1 || !b2 || !b3 || !b4 || !b5 || !b6;
                
-               if (icon == this.frontIcon && !b)
+               if (icon == frontIcon && !b)
                {
-                    icon = this.insideIcon;
+                    icon = insideIcon;
                }
           }
           else if (side == 1)
           {
-               return this.frontIcon;
+               return frontIcon;
           }
           else if (side == 0)
           {
-               return this.blockIcon;
+               return blockIcon;
           }
           if (!crusher)
           {
-               if (icon == this.insideIcon)
+               if (icon == insideIcon)
                {
-                    icon = this.frontIcon;
+                    icon = frontIcon;
                }
                
-               if (icon == this.blockIcon)
+               if (icon == blockIcon)
                {
-                    icon = this.frontIcon;
+                    icon = frontIcon;
                }
           }
           return icon;
@@ -132,7 +132,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
      
      
      @Override
-     public TileEntity createNewTileEntity (World world)
+     public TileEntity createNewTileEntity (final World world)
      {
           return new TileCrusher();
      }
@@ -177,7 +177,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           
           tile.checkForPower = true;
           
-          this.doThings(pos);
+          doThings(pos);
      }
      
      
@@ -191,7 +191,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           
           tile.checkForPower = true;
           
-          this.doThings(pos);
+          doThings(pos);
      }
      
      
@@ -207,7 +207,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           }
           boolean flag = false;
           
-          if (!this.isExtended(pos) && Assets.isPoweredIndirectly(pos))
+          if (!isExtended(pos) && Assets.isPoweredIndirectly(pos))
           {
                if (!(tile.power >= 100))
                {
@@ -215,7 +215,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
                     
                     return;
                }
-               if (this.extend(pos))
+               if (extend(pos))
                {
                     tile.power -= 100;
                     flag = true;
@@ -231,7 +231,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           }
           else if (!Assets.isPoweredIndirectly(pos))
           {
-               flag = this.retract(pos);
+               flag = retract(pos);
                
                tile.cooldown = 10;
                
@@ -297,7 +297,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
      
      private boolean retract (final Position pos)
      {
-          if (this.isExtended(pos))
+          if (isExtended(pos))
           {
                ((TileCrusher) pos.getTile()).extend = -8;
                
@@ -345,9 +345,9 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           
           Icon icon = this.getIcon(side, world.getBlockMetadata(x, y, z));
           
-          if (icon == this.sideIcon && ((TileCrusher) pos.getTile()).power >= 98)
+          if (icon == sideIcon && ((TileCrusher) pos.getTile()).power >= 98)
           {
-               icon = this.sideIconOn;
+               icon = sideIconOn;
           }
           return icon;
      }
@@ -368,7 +368,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
      @Override
      public AxisAlignedBB getCollisionBoundingBoxFromPool (final World world, final int x, final int y, final int z)
      {
-          this.setBlockBoundsBasedOnState(world, x, y, z);
+          setBlockBoundsBasedOnState(world, x, y, z);
           return super.getCollisionBoundingBoxFromPool(world, x, y, z);
      }
      

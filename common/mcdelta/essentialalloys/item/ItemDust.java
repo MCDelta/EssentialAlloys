@@ -31,11 +31,11 @@ public class ItemDust extends ItemEA
           super("dust." + name);
           
           this.magic = magic;
-          this.setCreativeTab(CreativeTabs.tabMaterials);
+          setCreativeTab(CreativeTabs.tabMaterials);
           
           if (magic)
           {
-               this.maxStackSize = 1;
+               maxStackSize = 1;
           }
      }
      
@@ -80,6 +80,6 @@ public class ItemDust extends ItemEA
      @SideOnly (Side.CLIENT)
      public boolean hasEffect (final ItemStack par1ItemStack, final int pass)
      {
-          return this.magic;
+          return magic;
      }
 }

@@ -45,10 +45,10 @@ public class PacketCrusherPower extends PacketDelta
      @Override
      public void writeData (final DataOutputStream data) throws IOException
      {
-          data.writeInt(this.power);
-          data.writeInt(this.x);
-          data.writeInt(this.y);
-          data.writeInt(this.z);
+          data.writeInt(power);
+          data.writeInt(x);
+          data.writeInt(y);
+          data.writeInt(z);
      }
      
      
@@ -57,10 +57,10 @@ public class PacketCrusherPower extends PacketDelta
      @Override
      public void readData (final DataInputStream data) throws IOException
      {
-          this.power = data.readInt();
-          this.x = data.readInt();
-          this.y = data.readInt();
-          this.z = data.readInt();
+          power = data.readInt();
+          x = data.readInt();
+          y = data.readInt();
+          z = data.readInt();
      }
      
      
@@ -73,13 +73,13 @@ public class PacketCrusherPower extends PacketDelta
           
           final World world = player.worldObj;
           
-          final Position pos = new Position(world, this.x, this.y, this.z);
+          final Position pos = new Position(world, x, y, z);
           
           if (pos.getTile() instanceof TileCrusher)
           {
                final TileCrusher tile = (TileCrusher) pos.getTile();
                
-               tile.power = this.power;
+               tile.power = power;
           }
      }
 }

@@ -19,8 +19,8 @@ public class GeneratorOres implements IWorldGenerator
      
      public GeneratorOres ()
      {
-          this.copperGen = new WorldGenMinable(EAContent.oreCopper.blockID, 8);
-          this.tinGen = new WorldGenMinable(EAContent.oreTin.blockID, 8);
+          copperGen = new WorldGenMinable(EAContent.oreCopper.blockID, 8);
+          tinGen = new WorldGenMinable(EAContent.oreTin.blockID, 8);
      }
      
      
@@ -32,7 +32,7 @@ public class GeneratorOres implements IWorldGenerator
           switch (world.provider.dimensionId)
           {
                case 0:
-                    this.generateSurface(world, rand, chunkX * 16, chunkZ * 16);
+                    generateSurface(world, rand, chunkX * 16, chunkZ * 16);
                     break;
                default:
                     break;
@@ -44,8 +44,8 @@ public class GeneratorOres implements IWorldGenerator
      
      private void generateSurface (final World world, final Random rand, final int chunkX, final int chunkZ)
      {
-          this.genStandardOre(15, this.copperGen, 0, 64, world, rand, chunkX, chunkZ);
-          this.genStandardOre(15, this.tinGen, 0, 64, world, rand, chunkX, chunkZ);
+          genStandardOre(15, copperGen, 0, 64, world, rand, chunkX, chunkZ);
+          genStandardOre(15, tinGen, 0, 64, world, rand, chunkX, chunkZ);
      }
      
      

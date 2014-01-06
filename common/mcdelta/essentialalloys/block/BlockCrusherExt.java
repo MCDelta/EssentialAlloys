@@ -33,7 +33,7 @@ public class BlockCrusherExt extends BlockSided
      public BlockCrusherExt (final String s)
      {
           super(EssentialAlloys.instance, s, Material.piston);
-          this.setCreativeTab(null);
+          setCreativeTab(null);
      }
      
      
@@ -43,7 +43,7 @@ public class BlockCrusherExt extends BlockSided
      @SideOnly (Side.CLIENT)
      public void registerIcons (final IconRegister register)
      {
-          this.extensionIcon = this.doRegister("crusherExt", register);
+          extensionIcon = doRegister("crusherExt", register);
      }
      
      
@@ -64,7 +64,7 @@ public class BlockCrusherExt extends BlockSided
      {
           final Position pos = new Position(world, x, y, z);
           
-          if (!this.canBlockStay(world, x, y, z))
+          if (!canBlockStay(world, x, y, z))
           {
                Assets.setToAir(pos);
           }
@@ -95,7 +95,7 @@ public class BlockCrusherExt extends BlockSided
      @Override
      public boolean canPlaceBlockAt (final World world, final int x, final int y, final int z)
      {
-          return this.canBlockStay(world, x, y, z);
+          return canBlockStay(world, x, y, z);
      }
      
      
@@ -169,7 +169,7 @@ public class BlockCrusherExt extends BlockSided
                default:
                     break;
           }
-          this.setBlockBoundsBasedOnState(world, x, y, z);
+          setBlockBoundsBasedOnState(world, x, y, z);
           super.addCollisionBoxesToList(world, x, y, z, axis, list, entity);
           
           this.setBlockBounds(BlockShapes.extensionShaft(face, shift, 0));

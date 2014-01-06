@@ -25,11 +25,11 @@ public class ItemIngot extends ItemEA
           super("ingot." + s);
           
           this.magic = magic;
-          this.setCreativeTab(CreativeTabs.tabMaterials);
+          setCreativeTab(CreativeTabs.tabMaterials);
           
           if (magic)
           {
-               this.maxStackSize = 1;
+               maxStackSize = 1;
           }
      }
      
@@ -40,6 +40,6 @@ public class ItemIngot extends ItemEA
      @SideOnly (Side.CLIENT)
      public boolean hasEffect (final ItemStack par1ItemStack, final int pass)
      {
-          return this.magic;
+          return magic;
      }
 }

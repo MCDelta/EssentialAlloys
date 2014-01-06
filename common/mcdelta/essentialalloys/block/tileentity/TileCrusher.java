@@ -15,7 +15,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
 import cpw.mods.fml.common.network.PacketDispatcher;
 
-public class TileEntityCrusher extends TileEntityDelta
+public class TileCrusher extends TileEntityDelta
 {
      public int     extend        = 0;
      public int     extendTotal   = 0;
@@ -35,6 +35,7 @@ public class TileEntityCrusher extends TileEntityDelta
           {
                return;
           }
+          
           this.updateExtensions();
           this.updatePower();
      }

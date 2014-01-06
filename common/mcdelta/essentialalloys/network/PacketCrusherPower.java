@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import mcdelta.core.assets.world.Position;
 import mcdelta.core.network.PacketDelta;
-import mcdelta.essentialalloys.block.tileentity.TileEntityCrusher;
+import mcdelta.essentialalloys.block.tileentity.TileCrusher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.world.World;
@@ -75,9 +75,9 @@ public class PacketCrusherPower extends PacketDelta
           
           final Position pos = new Position(world, this.x, this.y, this.z);
           
-          if (pos.getTile() instanceof TileEntityCrusher)
+          if (pos.getTile() instanceof TileCrusher)
           {
-               final TileEntityCrusher tile = (TileEntityCrusher) pos.getTile();
+               final TileCrusher tile = (TileCrusher) pos.getTile();
                
                tile.power = this.power;
           }

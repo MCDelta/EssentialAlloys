@@ -5,7 +5,7 @@ import mcdelta.core.assets.client.RenderAssets;
 import mcdelta.core.assets.world.BlockShapes;
 import mcdelta.core.assets.world.Position;
 import mcdelta.essentialalloys.EAContent;
-import mcdelta.essentialalloys.block.tileentity.TileEntityCrusher;
+import mcdelta.essentialalloys.block.tileentity.TileCrusher;
 import mcdelta.essentialalloys.proxy.EAClientProxy;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -93,7 +93,7 @@ public class RenderCrusher implements ISimpleBlockRenderingHandler
           
           RenderAssets.rotateSidedRenderer(renderer, face);
           
-          if (!EAContent.crusher.isExtended(pos) && ((TileEntityCrusher) pos.getTile()).extend == 0)
+          if (!EAContent.crusher.isExtended(pos) && ((TileCrusher) pos.getTile()).extend == 0)
           {
                if (renderer.hasOverrideBlockTexture())
                {

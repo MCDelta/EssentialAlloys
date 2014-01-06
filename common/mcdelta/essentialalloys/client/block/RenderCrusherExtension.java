@@ -5,7 +5,7 @@ import mcdelta.core.assets.client.RenderAssets;
 import mcdelta.core.assets.world.BlockShapes;
 import mcdelta.core.assets.world.Position;
 import mcdelta.essentialalloys.EAContent;
-import mcdelta.essentialalloys.block.tileentity.TileEntityCrusher;
+import mcdelta.essentialalloys.block.tileentity.TileCrusher;
 import mcdelta.essentialalloys.proxy.EAClientProxy;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -51,7 +51,7 @@ public class RenderCrusherExtension implements ISimpleBlockRenderingHandler
           
           if (flag)
           {
-               final TileEntityCrusher source = (TileEntityCrusher) pos.move(Assets.invertFace(Assets.getFacing(pos.getMeta()))).getTile();
+               final TileCrusher source = (TileCrusher) pos.move(Assets.invertFace(Assets.getFacing(pos.getMeta()))).getTile();
                
                final int extend = source.extend;
                final int extendTotal = source.extendTotal;

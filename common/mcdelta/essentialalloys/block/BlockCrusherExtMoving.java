@@ -5,7 +5,7 @@ import java.util.List;
 import mcdelta.core.assets.Assets;
 import mcdelta.core.assets.world.BlockShapes;
 import mcdelta.core.assets.world.Position;
-import mcdelta.essentialalloys.block.tileentity.TileEntityCrusher;
+import mcdelta.essentialalloys.block.tileentity.TileCrusher;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.EnumFacing;
@@ -30,7 +30,7 @@ public class BlockCrusherExtMoving extends BlockCrusherExt
           final Position pos = new Position(world, x, y, z);
           final EnumFacing face = Assets.getFacing(pos.getMeta());
           
-          final TileEntityCrusher source = (TileEntityCrusher) pos.move(Assets.invertFace(Assets.getFacing(pos.getMeta()))).getTile();
+          final TileCrusher source = (TileCrusher) pos.move(Assets.invertFace(Assets.getFacing(pos.getMeta()))).getTile();
           
           final int extend = source.extend;
           final int extendTotal = source.extendTotal;
@@ -49,7 +49,7 @@ public class BlockCrusherExtMoving extends BlockCrusherExt
           final Position pos = new Position(world, x, y, z);
           final EnumFacing face = Assets.getFacing(pos.getMeta());
           
-          final TileEntityCrusher source = (TileEntityCrusher) pos.move(Assets.invertFace(Assets.getFacing(pos.getMeta()))).getTile();
+          final TileCrusher source = (TileCrusher) pos.move(Assets.invertFace(Assets.getFacing(pos.getMeta()))).getTile();
           
           if (source != null)
           {

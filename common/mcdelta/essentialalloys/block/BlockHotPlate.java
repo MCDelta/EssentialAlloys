@@ -7,9 +7,11 @@ import java.util.Random;
 import mcdelta.core.assets.Assets;
 import mcdelta.core.assets.world.Position;
 import mcdelta.core.logging.Logger;
+import mcdelta.essentialalloys.block.tileentity.TileHotPlate;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public class BlockHotPlate extends BlockEA
@@ -207,4 +209,13 @@ public class BlockHotPlate extends BlockEA
           }
           return true;
      }
+     
+     
+     
+     
+     /**@Override
+     public TileEntity createNewTileEntity (World world)
+     {
+          return new TileHotPlate();
+     }*/
 }

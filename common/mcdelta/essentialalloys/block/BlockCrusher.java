@@ -9,7 +9,7 @@ import mcdelta.core.assets.world.Position;
 import mcdelta.core.block.BlockSided;
 import mcdelta.essentialalloys.EAContent;
 import mcdelta.essentialalloys.EssentialAlloys;
-import mcdelta.essentialalloys.block.tileentity.TileEntityCrusher;
+import mcdelta.essentialalloys.block.tileentity.TileCrusher;
 import mcdelta.essentialalloys.network.PacketCrusherExtend;
 import mcdelta.essentialalloys.proxy.EAClientProxy;
 import net.minecraft.block.Block;
@@ -132,9 +132,9 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
      
      
      @Override
-     public TileEntity createNewTileEntity (final World world)
+     public TileEntity createNewTileEntity (World world)
      {
-          return new TileEntityCrusher();
+          return new TileCrusher();
      }
      
      
@@ -147,7 +147,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           
           final EnumFacing face = Assets.getFacing(pos.getMeta());
           
-          if ((TileEntityCrusher) pos.getTile() != null && (EAContent.crusher.isExtended(pos) || ((TileEntityCrusher) pos.getTile()).extend != 0))
+          if ((TileCrusher) pos.getTile() != null && (EAContent.crusher.isExtended(pos) || ((TileCrusher) pos.getTile()).extend != 0))
           {
                this.setBlockBounds(BlockShapes.crusherNonExtended(face));
           }
@@ -173,7 +173,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
      public void onPostBlockPlaced (final World world, final int x, final int y, final int z, final int metadata)
      {
           final Position pos = new Position(world, x, y, z);
-          final TileEntityCrusher tile = (TileEntityCrusher) pos.getTile();
+          final TileCrusher tile = (TileCrusher) pos.getTile();
           
           tile.checkForPower = true;
           
@@ -187,7 +187,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
      public void onNeighborBlockChange (final World world, final int x, final int y, final int z, final int neighborID)
      {
           final Position pos = new Position(world, x, y, z);
-          final TileEntityCrusher tile = (TileEntityCrusher) pos.getTile();
+          final TileCrusher tile = (TileCrusher) pos.getTile();
           
           tile.checkForPower = true;
           
@@ -199,7 +199,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
      
      public void doThings (final Position pos)
      {
-          final TileEntityCrusher tile = (TileEntityCrusher) pos.getTile();
+          final TileCrusher tile = (TileCrusher) pos.getTile();
           
           if (tile.extend != 0 || tile.cooldown != 0)
           {
@@ -277,7 +277,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           {
                return false;
           }
-          ((TileEntityCrusher) pos.getTile()).extend = 3;
+          ((TileCrusher) pos.getTile()).extend = 3;
           
           Assets.placeBlock(pos.move(Assets.getFacing(pos.getMeta())), new BlockData(EAContent.crusherExtMoving, pos.getMeta()));
           
@@ -299,7 +299,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
      {
           if (this.isExtended(pos))
           {
-               ((TileEntityCrusher) pos.getTile()).extend = -8;
+               ((TileCrusher) pos.getTile()).extend = -8;
                
                Assets.placeBlock(pos.move(Assets.getFacing(pos.getMeta())), new BlockData(EAContent.crusherExtMoving, pos.getMeta()));
                
@@ -345,7 +345,7 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           
           Icon icon = this.getIcon(side, world.getBlockMetadata(x, y, z));
           
-          if (icon == this.sideIcon && ((TileEntityCrusher) pos.getTile()).power >= 98)
+          if (icon == this.sideIcon && ((TileCrusher) pos.getTile()).power >= 98)
           {
                icon = this.sideIconOn;
           }

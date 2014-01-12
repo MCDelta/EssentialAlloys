@@ -271,9 +271,9 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
           final Position target = pos.move(Assets.getFacing(pos.getMeta()));
           final World world = (World) pos.world;
           
-          if (!Assets.isAirBlock(target) && EssentialAlloys.crusherRecipes.containsKey(target.getBlockData().block))
+          if (!Assets.isAirBlock(target) && EAContent.crusherRecipes.containsKey(target.getBlockData().block))
           {
-               final EntityItem item = new EntityItem(world, target.x, target.y, target.z, EssentialAlloys.crusherRecipes.get(target.getBlockData().block).copy());
+               final EntityItem item = new EntityItem(world, target.x, target.y, target.z, EAContent.crusherRecipes.get(target.getBlockData().block).copy());
                
                if (Assets.isServer())
                {

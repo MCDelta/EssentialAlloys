@@ -35,7 +35,7 @@ public class GuiHotPlate extends GuiContainer
      @Override
      protected void drawGuiContainerForegroundLayer (int par1, int par2)
      {
-          String s = "" + ((hotPlateInv.dimensions[0] * hotPlateInv.dimensions[1] * hotPlateInv.dimensions[2] == 0) ? EnumChatFormatting.DARK_RED : EnumChatFormatting.DARK_GREEN) + hotPlateInv.dimensions[0] + "x" + hotPlateInv.dimensions[1] + "x" + hotPlateInv.dimensions[2] + EnumChatFormatting.RESET + " " + I18n.getString(hotPlateInv.getInvName());
+          String s = "" + ((hotPlateInv.dimensions[0] * hotPlateInv.dimensions[1] * hotPlateInv.dimensions[2] == 0) ? EnumChatFormatting.DARK_RED : EnumChatFormatting.DARK_GREEN) + EnumChatFormatting.BOLD + hotPlateInv.dimensions[0] + "x" + hotPlateInv.dimensions[1] + "x" + hotPlateInv.dimensions[2] + EnumChatFormatting.RESET + " " + I18n.getString(hotPlateInv.getInvName());
           this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 1, 4210752);
           this.fontRenderer.drawString(I18n.getString("container.inventory"), 8, this.ySize - 99, 4210752);
      }

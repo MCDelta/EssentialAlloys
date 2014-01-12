@@ -17,7 +17,7 @@ public class BlockCrusherExtMoving extends BlockCrusherExt
      public BlockCrusherExtMoving (final String s)
      {
           super(s);
-          
+          setCreativeTab(null);
           setBlockUnbreakable();
      }
      

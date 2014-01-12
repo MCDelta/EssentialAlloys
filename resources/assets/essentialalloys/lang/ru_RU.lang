@@ -1,0 +1,78 @@
+# items
+
+## ingots
+item.essentialalloys:ingot.copper.name=Медный слиток
+item.essentialalloys:ingot.tin.name=Оловянный слиток
+item.essentialalloys:ingot.bronze.name=Бронзовый слиток
+item.essentialalloys:ingot.silver.name=Серебряный слиток
+item.essentialalloys:ingot.magic.name=Магический слиток
+item.essentialalloys:ingot.steel.name=Стальной слиток
+
+## dusts
+item.essentialalloys:dust.iron.name=Железная пыль
+item.essentialalloys:dust.gold.name=Золотая пыль
+item.essentialalloys:dust.copper.name=Медная пыль
+item.essentialalloys:dust.tin.name=Оловянная пыль
+item.essentialalloys:dust.bronze.name=Бронзовая пыль
+item.essentialalloys:dust.silver.name=Серебряная пыль
+item.essentialalloys:dust.magic.name=Магическая пыль
+
+## tools
+item.essentialalloys:bronze.sword.name=Бронзовый меч
+item.essentialalloys:bronze.pickaxe.name=Бронзовая кирка
+item.essentialalloys:bronze.shovel.name=Бронзовая лопата
+item.essentialalloys:bronze.axe.name=Бронзовый топор
+item.essentialalloys:bronze.hoe.name=Бронзовая мотыга
+
+item.essentialalloys:magic.sword.name=Магический меч
+item.essentialalloys:magic.pickaxe.name=Магическая кирка
+item.essentialalloys:magic.shovel.name=Магическая лопата
+item.essentialalloys:magic.axe.name=Магический топор
+item.essentialalloys:magic.hoe.name=Магическая мотыга
+
+item.essentialalloys:steel.sword.name=Стальной меч
+item.essentialalloys:steel.pickaxe.name=Стальная кирка
+item.essentialalloys:steel.shovel.name=Стальная лопата
+item.essentialalloys:steel.axe.name=Стальной топор
+item.essentialalloys:steel.hoe.name=Стальная мотыга
+
+## misc
+item.essentialalloys:nugget.steel.name=Кусочек стали
+
+
+# blocks
+
+## ores
+tile.essentialalloys:ore.copper.name=Медная руда
+tile.essentialalloys:ore.tin.name=Оловянная руда
+tile.essentialalloys:ore.silver.name=Серебряная руда
+
+## storage
+tile.essentialalloys:storage.copper.name=Медный блок
+tile.essentialalloys:storage.tin.name=Оловянный блок
+tile.essentialalloys:storage.bronze.name=Бронзовый блок
+tile.essentialalloys:storage.silver.name=Серебряный блок
+tile.essentialalloys:storage.magic.name=Магический блок
+
+tile.essentialalloys:crusher.name=Дробилка
+tile.essentialalloys:crusherExt.name=Расширение дробилки
+tile.essentialalloys:crusherExtMoving.name=(TECHNICAL)
+tile.essentialalloys:hotPlate.name=Blast Plate
+
+
+# materials
+
+material.bronze=Бронза
+material.magic=Магия
+material.steel=Сталь
+
+
+# enchantment
+
+enchantment.essentialalloys:enchant=Зачарованно
+enchantment.level.0=
+
+
+# containers
+
+container.hotPlate=Доменная печь

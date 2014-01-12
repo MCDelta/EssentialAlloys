@@ -48,7 +48,9 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
      
      public BlockCrusher (final String s)
      {
-          super(EssentialAlloys.instance, s, Material.piston);
+          super(EssentialAlloys.instance, s, Material.iron);
+          this.setHardness(3.0F);
+          this.setResistance(8.0F);
      }
      
      

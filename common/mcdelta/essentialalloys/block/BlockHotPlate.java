@@ -32,6 +32,8 @@ public class BlockHotPlate extends BlockEA implements ITileEntityProvider
      public BlockHotPlate (final String s)
      {
           super(s, Material.iron);
+          this.setHardness(3.0F);
+          this.setResistance(8.0F);
      }
      
      
@@ -51,7 +53,7 @@ public class BlockHotPlate extends BlockEA implements ITileEntityProvider
      {
           this.blockIcon = doRegister("hotPlate_side", register);
           this.blockIconTop = doRegister("hotPlate_top", register);
-          this.blockIconBottom = doRegister("hotPlate_bottom", register);
+          this.blockIconBottom = Block.netherBrick.getIcon(0, 0);
      }
      
      

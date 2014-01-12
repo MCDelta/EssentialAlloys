@@ -57,6 +57,7 @@ tile.essentialalloys:storage.magic.name=Block of Magic
 tile.essentialalloys:crusher.name=Crusher
 tile.essentialalloys:crusherExt.name=Crusher Extension
 tile.essentialalloys:crusherExtMoving.name=(TECHNICAL)
+tile.essentialalloys:hotPlate.name=Blast Plate
 
 
 # materials
@@ -70,3 +71,8 @@ material.steel=Steel
 
 enchantment.essentialalloys:enchant=Enchanted
 enchantment.level.0=
+
+
+# containers
+
+container.hotPlate=Blast Furnace

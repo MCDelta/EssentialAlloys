@@ -1,21 +1,30 @@
 package mcdelta.essentialalloys.block;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import mcdelta.core.assets.Assets;
 import mcdelta.core.assets.world.Position;
-import mcdelta.core.logging.Logger;
+import mcdelta.essentialalloys.EAContent;
+import mcdelta.essentialalloys.EssentialAlloys;
+import mcdelta.essentialalloys.block.tileentity.TileHotPlate;
+import mcdelta.essentialalloys.gui.GuiHandler;
 import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockHotPlate extends BlockEA
+public class BlockHotPlate extends BlockEA implements ITileEntityProvider
 {
-     public static List<Block> bottom = new ArrayList<Block>();
-     public static List<Block> filler = new ArrayList<Block>();
+     @SideOnly (Side.CLIENT)
+     private Icon blockIconTop;
+     @SideOnly (Side.CLIENT)
+     private Icon blockIconBottom;
      
      
      
@@ -23,17 +32,26 @@ public class BlockHotPlate extends BlockEA
      public BlockHotPlate (final String s)
      {
           super(s, Material.iron);
-          
-          if (bottom.isEmpty())
-          {
-               bottom.clear();
-               bottom.add(Block.bedrock);
-               bottom.add(this);
-               
-               filler.clear();
-               filler.add(Block.lavaMoving);
-               filler.add(Block.lavaStill);
-          }
+     }
+     
+     
+     
+     
+     @SideOnly (Side.CLIENT)
+     public Icon getIcon (int side, int meta)
+     {
+          return side == 1 ? blockIconTop : side == 0 ? blockIconBottom : blockIcon;
+     }
+     
+     
+     
+     
+     @SideOnly (Side.CLIENT)
+     public void registerIcons (IconRegister register)
+     {
+          this.blockIcon = doRegister("hotPlate_side", register);
+          this.blockIconTop = doRegister("hotPlate_top", register);
+          this.blockIconBottom = doRegister("hotPlate_bottom", register);
      }
      
      
@@ -63,7 +81,7 @@ public class BlockHotPlate extends BlockEA
                               {
                                    final Position target = pos.move(x, 0, z);
                                    
-                                   if (!bottom.contains(target.getBlock()))
+                                   if (target.getBlock() != Block.netherBrick && target.getBlock() != Block.netherFence && target.getBlock() != Block.stairsNetherBrick && ((target.getBlock() != Block.stoneSingleSlab || target.getBlock() != Block.stoneDoubleSlab) && target.getMeta() != 6 && target.getMeta() != 14) && target.getBlock() != EAContent.hotPlate)
                                    {
                                         stop = true;
                                         break;
@@ -72,6 +90,7 @@ public class BlockHotPlate extends BlockEA
                          }
                     }
                }
+               
                if (!stop)
                {
                     dimensions[radius - 1] = true;
@@ -97,15 +116,7 @@ public class BlockHotPlate extends BlockEA
                                         
                                         if (Math.abs(x) == radius || Math.abs(z) == radius)
                                         {
-                                             if (target.getBlock() != Block.netherBrick && target.getBlock() != Block.netherFence && target.getBlock() != Block.stairsNetherBrick && (target.getBlock() != Block.stoneSingleSlab || target.getBlock() != Block.stoneDoubleSlab) && target.getMeta() != 6 && target.getMeta() != 14)
-                                             {
-                                                  stop = true;
-                                                  break;
-                                             }
-                                        }
-                                        else
-                                        {
-                                             if (!Assets.isAirBlock(target) && !filler.contains(target.getBlock()))
+                                             if (target.getBlock() != Block.netherBrick && target.getBlock() != Block.netherFence && target.getBlock() != Block.stairsNetherBrick && ((target.getBlock() != Block.stoneSingleSlab || target.getBlock() != Block.stoneDoubleSlab) && target.getMeta() != 6 && target.getMeta() != 14))
                                              {
                                                   stop = true;
                                                   break;
@@ -191,26 +202,29 @@ public class BlockHotPlate extends BlockEA
      
      
      
-     @Override
-     public boolean onBlockActivated (final World world, final int x, final int y, final int z, final EntityPlayer player, final int side, final float offsetX, final float offsetY, final float offsetZ)
+     public boolean onBlockActivated (World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
      {
-          final Position pos = new Position(world, x, y, z);
-          final int[] dimensions = getDimensions(pos);
-          final int fuel = getFuel(pos, dimensions);
-          final boolean removed = removeRandomFuel(pos, dimensions);
+          ((TileHotPlate) world.getBlockTileEntity(x, y, z)).refreshDimensions();
+          ((TileHotPlate) world.getBlockTileEntity(x, y, z)).blastFurnaceBB = ((TileHotPlate) world.getBlockTileEntity(x, y, z)).getFurnaceBB();
           
-          if (Assets.isServer())
+          if (Assets.isClient())
           {
-               Logger.log("area: " + dimensions[0] * dimensions[1] * dimensions[2], dimensions[0] + "x" + dimensions[1] + "x" + dimensions[2]);
-               Logger.log("fuel: " + fuel + ", removed: " + removed);
-               Logger.blank();
+               return true;
           }
-          return true;
+          else
+          {
+               player.openGui(EssentialAlloys.instance, GuiHandler.hotPlateGuiID, world, x, y, z);
+               
+               return true;
+          }
      }
      
      
-     /**
-      * @Override public TileEntity createNewTileEntity (World world) { return
-      *           new TileHotPlate(); }
-      */
+     
+     
+     @Override
+     public TileEntity createNewTileEntity (World world)
+     {
+          return new TileHotPlate();
+     }
 }

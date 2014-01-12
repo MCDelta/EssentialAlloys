@@ -6,7 +6,7 @@ import mcdelta.core.assets.Assets;
 import mcdelta.core.assets.world.Position;
 import mcdelta.core.block.tileentity.TileEntityDelta;
 import mcdelta.essentialalloys.EAContent;
-import mcdelta.essentialalloys.data.NBTTags;
+import mcdelta.essentialalloys.data.EANBTTags;
 import mcdelta.essentialalloys.network.PacketCrusherPower;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFurnace;
@@ -165,11 +165,11 @@ public class TileCrusher extends TileEntityDelta
      {
           super.writeToNBT(nbtTag);
           
-          nbtTag.setInteger(NBTTags.CRUSHER_STATUS, extend);
-          nbtTag.setInteger(NBTTags.CRUSHER_STATUS_TOTAL, extendTotal);
-          nbtTag.setInteger(NBTTags.CRUSHER_COOLDOWN, cooldown);
-          nbtTag.setInteger(NBTTags.CRUSHER_POWER, power);
-          nbtTag.setBoolean(NBTTags.CRUSHER_CHECK, checkForPower);
+          nbtTag.setInteger(EANBTTags.CRUSHER_STATUS, extend);
+          nbtTag.setInteger(EANBTTags.CRUSHER_STATUS_TOTAL, extendTotal);
+          nbtTag.setInteger(EANBTTags.CRUSHER_COOLDOWN, cooldown);
+          nbtTag.setInteger(EANBTTags.CRUSHER_POWER, power);
+          nbtTag.setBoolean(EANBTTags.CRUSHER_CHECK, checkForPower);
      }
      
      
@@ -180,10 +180,10 @@ public class TileCrusher extends TileEntityDelta
      {
           super.readFromNBT(nbtTag);
           
-          extend = nbtTag.getInteger(NBTTags.CRUSHER_STATUS);
-          extendTotal = nbtTag.getInteger(NBTTags.CRUSHER_STATUS_TOTAL);
-          cooldown = nbtTag.getInteger(NBTTags.CRUSHER_COOLDOWN);
-          power = nbtTag.getInteger(NBTTags.CRUSHER_POWER);
-          checkForPower = nbtTag.getBoolean(NBTTags.CRUSHER_CHECK);
+          extend = nbtTag.getInteger(EANBTTags.CRUSHER_STATUS);
+          extendTotal = nbtTag.getInteger(EANBTTags.CRUSHER_STATUS_TOTAL);
+          cooldown = nbtTag.getInteger(EANBTTags.CRUSHER_COOLDOWN);
+          power = nbtTag.getInteger(EANBTTags.CRUSHER_POWER);
+          checkForPower = nbtTag.getBoolean(EANBTTags.CRUSHER_CHECK);
      }
 }

@@ -201,24 +201,40 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
      {
           final TileCrusher tile = (TileCrusher) pos.getTile();
           
-          if (tile.extend != 0 || tile.cooldown != 0)
+          if (tile != null)
           {
-               return;
-          }
-          boolean flag = false;
-          
-          if (!isExtended(pos) && Assets.isPoweredIndirectly(pos))
-          {
-               if (!(tile.power >= 100))
+               if (tile.extend != 0 || tile.cooldown != 0)
                {
-                    tile.checkForPower = true;
-                    
                     return;
                }
-               if (extend(pos))
+               
+               boolean flag = false;
+               
+               if (!isExtended(pos) && Assets.isPoweredIndirectly(pos))
                {
-                    tile.power -= 100;
-                    flag = true;
+                    if (!(tile.power >= 100))
+                    {
+                         tile.checkForPower = true;
+                         
+                         return;
+                    }
+                    if (extend(pos))
+                    {
+                         tile.power -= 100;
+                         flag = true;
+                         
+                         tile.cooldown = 10;
+                         
+                         if (flag && Assets.isServer())
+                         {
+                              PacketDispatcher.sendPacketToAllAround(pos.x, pos.y, pos.z, 20, ((World) pos.world).provider.dimensionId, Assets.populatePacket(new PacketCrusherExtend(tile.extend, pos.x, pos.y, pos.z)));
+                         }
+                         return;
+                    }
+               }
+               else if (!Assets.isPoweredIndirectly(pos))
+               {
+                    flag = retract(pos);
                     
                     tile.cooldown = 10;
                     
@@ -228,18 +244,6 @@ public class BlockCrusher extends BlockSided implements ITileEntityProvider
                     }
                     return;
                }
-          }
-          else if (!Assets.isPoweredIndirectly(pos))
-          {
-               flag = retract(pos);
-               
-               tile.cooldown = 10;
-               
-               if (flag && Assets.isServer())
-               {
-                    PacketDispatcher.sendPacketToAllAround(pos.x, pos.y, pos.z, 20, ((World) pos.world).provider.dimensionId, Assets.populatePacket(new PacketCrusherExtend(tile.extend, pos.x, pos.y, pos.z)));
-               }
-               return;
           }
      }
      

@@ -5,7 +5,9 @@ import java.util.Map;
 
 import mcdelta.core.IContent;
 import mcdelta.core.ModDelta;
+import mcdelta.essentialalloys.config.EAConfig;
 import mcdelta.essentialalloys.event.EventBlockBreakEA;
+import mcdelta.essentialalloys.gui.GuiHandler;
 import mcdelta.essentialalloys.proxy.EACommonProxy;
 import mcdelta.essentialalloys.world.GeneratorOres;
 import net.minecraft.block.Block;
@@ -23,6 +25,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod (modid = EssentialAlloys.MOD_ID, useMetadata = true)
@@ -50,7 +53,7 @@ public class EssentialAlloys extends ModDelta
      @Override
      public void deltaInit (final FMLPreInitializationEvent event)
      {
-          this.init(event);
+          this.init(event, new EAConfig());
      }
      
      
@@ -123,14 +126,14 @@ public class EssentialAlloys extends ModDelta
           GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EAContent.blockCopper), "xxx", "xxx", "xxx", 'x', "ingotCopper"));
           GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EAContent.blockTin), "xxx", "xxx", "xxx", 'x', "ingotTin"));
           GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EAContent.blockMagic), "xxx", "xxx", "xxx", 'x', "ingotMagic"));
-          
           GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EAContent.ingotSteel), "xxx", "xxx", "xxx", 'x', "nuggetSteel"));
-          
           GameRegistry.registerWorldGenerator(new GeneratorOres());
           
           MinecraftForge.EVENT_BUS.register(new EventBlockBreakEA());
           
           proxy.registerRenderers();
+          
+          NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
      }
      
      

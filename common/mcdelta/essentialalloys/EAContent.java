@@ -11,6 +11,7 @@ import mcdelta.essentialalloys.block.BlockEAOre;
 import mcdelta.essentialalloys.block.BlockHotPlate;
 import mcdelta.essentialalloys.block.BlockStorage;
 import mcdelta.essentialalloys.block.tileentity.TileCrusher;
+import mcdelta.essentialalloys.block.tileentity.TileHotPlate;
 import mcdelta.essentialalloys.enchant.EnchEnchanted;
 import mcdelta.essentialalloys.item.ItemDust;
 import mcdelta.essentialalloys.item.ItemEA;
@@ -89,6 +90,7 @@ public class EAContent implements IContent
           blockMagic = new BlockStorage("magic");
           
           GameRegistry.registerTileEntity(TileCrusher.class, "crusher");
+          GameRegistry.registerTileEntity(TileHotPlate.class, "hotPlate");
           
           MinecraftForge.setBlockHarvestLevel(oreCopper, "pickaxe", 1);
           MinecraftForge.setBlockHarvestLevel(oreTin, "pickaxe", 1);

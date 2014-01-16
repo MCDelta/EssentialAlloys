@@ -14,16 +14,17 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.AxisAlignedBB;
 
 public class TileHotPlate extends TileEntityDelta implements IInventory, ISidedInventory
 {
-     public final ItemStack[] smeltingStacks     = new ItemStack[10];
-     public int[]             smeltingTimes      = new int[5];
-     public int[]             smeltingTotalTimes = new int[5];
-     private int              tick               = 0;
-     public AxisAlignedBB     blastFurnaceBB;
-     public int[]             dimensions;
+     public ItemStack[]   smeltingStacks     = new ItemStack[10];
+     public int[]         smeltingTimes      = new int[5];
+     public int[]         smeltingTotalTimes = new int[5];
+     private int          tick               = 0;
+     public AxisAlignedBB blastFurnaceBB;
+     public int[]         dimensions;
      
      
      
@@ -205,6 +206,22 @@ public class TileHotPlate extends TileEntityDelta implements IInventory, ISidedI
      {
           super.writeToNBT(nbtTag);
           nbtTag.setInteger(EANBTTags.HOTPLATE_TICK, tick);
+          nbtTag.setIntArray(EANBTTags.SMELTING_TIMES, smeltingTimes);
+          nbtTag.setIntArray(EANBTTags.SMELTING_TIMES_TOTAL, smeltingTotalTimes);
+          
+          NBTTagList items = new NBTTagList();
+          for (int i = 0; i < smeltingStacks.length; ++i)
+          {
+               if (smeltingStacks[i] != null)
+               {
+                    NBTTagCompound stack = new NBTTagCompound();
+                    stack.setByte("Slot", (byte) i);
+                    smeltingStacks[i].writeToNBT(stack);
+                    items.appendTag(stack);
+               }
+          }
+          nbtTag.setTag("Items", items);
+          
      }
      
      
@@ -215,6 +232,21 @@ public class TileHotPlate extends TileEntityDelta implements IInventory, ISidedI
      {
           super.readFromNBT(nbtTag);
           tick = nbtTag.getInteger(EANBTTags.HOTPLATE_TICK);
+          smeltingTimes = nbtTag.getIntArray(EANBTTags.SMELTING_TIMES);
+          smeltingTotalTimes = nbtTag.getIntArray(EANBTTags.SMELTING_TIMES_TOTAL);
+          
+          NBTTagList items = nbtTag.getTagList("Items");
+          smeltingStacks = new ItemStack[getSizeInventory()];
+          for (int i = 0; i < items.tagCount(); ++i)
+          {
+               NBTTagCompound nbttagcompound1 = (NBTTagCompound) items.tagAt(i);
+               int j = nbttagcompound1.getByte("Slot") & 255;
+               
+               if (j >= 0 && j < smeltingStacks.length)
+               {
+                    smeltingStacks[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+               }
+          }
      }
      
      

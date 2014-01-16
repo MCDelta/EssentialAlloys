@@ -10,4 +10,6 @@ public class EANBTTags
      
      public static final String HOTPLATE_DIMENSIONS  = "HotPDimensions";
      public static final String HOTPLATE_TICK        = "HotPTick";
+     public static final String SMELTING_TIMES       = "HotPSmeltTimes";
+     public static final String SMELTING_TIMES_TOTAL = "HotPSmeltTimesTotal";
 }

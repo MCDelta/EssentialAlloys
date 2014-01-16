@@ -33,6 +33,8 @@ public class BlockCrusherExt extends BlockSided
      public BlockCrusherExt (final String s)
      {
           super(EssentialAlloys.instance, s, Material.piston);
+          setHardness(3.0F);
+          setResistance(8.0F);
           setCreativeTab(null);
      }
      

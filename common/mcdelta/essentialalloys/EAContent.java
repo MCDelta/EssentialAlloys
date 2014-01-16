@@ -101,16 +101,18 @@ public class EAContent implements IContent
           blockBronze = new BlockStorage("bronze");
           blockMagic = new BlockStorage("magic");
           
-          GameRegistry.registerTileEntity(TileCrusher.class, "crusher");
-          GameRegistry.registerTileEntity(TileHotPlate.class, "hotPlate");
-          
+          MinecraftForge.setBlockHarvestLevel(crusher, "pickaxe", 1);
+          MinecraftForge.setBlockHarvestLevel(crusherExt, "pickaxe", 1);
+          MinecraftForge.setBlockHarvestLevel(hotPlate, "pickaxe", 2);
           MinecraftForge.setBlockHarvestLevel(oreCopper, "pickaxe", 1);
           MinecraftForge.setBlockHarvestLevel(oreTin, "pickaxe", 1);
-          
           MinecraftForge.setBlockHarvestLevel(blockCopper, "pickaxe", 1);
           MinecraftForge.setBlockHarvestLevel(blockTin, "pickaxe", 1);
           MinecraftForge.setBlockHarvestLevel(blockBronze, "pickaxe", 1);
           MinecraftForge.setBlockHarvestLevel(blockMagic, "pickaxe", 1);
+          
+          GameRegistry.registerTileEntity(TileCrusher.class, "crusher");
+          GameRegistry.registerTileEntity(TileHotPlate.class, "hotPlate");
           
           enchant = new EnchEnchanted("enchant", 999, EnumEnchantmentType.all);
           

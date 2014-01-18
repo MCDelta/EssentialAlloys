@@ -7,5 +7,8 @@ public class BlockStorage extends BlockEA
      public BlockStorage (final String s)
      {
           super("storage." + s, Material.iron);
+          setHardness(5.0F);
+          setResistance(10.0F);
+          setStepSound(soundMetalFootstep);
      }
 }

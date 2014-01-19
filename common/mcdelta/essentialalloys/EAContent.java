@@ -3,11 +3,13 @@ package mcdelta.essentialalloys;
 import java.util.HashMap;
 import java.util.Map;
 
+import mcdelta.core.DeltaContent;
 import mcdelta.core.IContent;
 import mcdelta.core.block.BlockDelta;
 import mcdelta.core.client.CreativeTabDelta;
 import mcdelta.core.enchant.EnchantmentDelta;
 import mcdelta.core.material.ItemMaterial;
+import mcdelta.core.support.SupportEssentialAlloys;
 import mcdelta.essentialalloys.block.BlockCrusher;
 import mcdelta.essentialalloys.block.BlockCrusherExt;
 import mcdelta.essentialalloys.block.BlockCrusherExtMoving;
@@ -21,7 +23,6 @@ import mcdelta.essentialalloys.item.ItemDust;
 import mcdelta.essentialalloys.item.ItemEA;
 import mcdelta.essentialalloys.item.ItemIngot;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -78,33 +79,33 @@ public class EAContent implements IContent
      {
           tab = new CreativeTabDelta("essentialalloys");
           
-          ingotCopper = new ItemIngot("copper");
-          ingotTin = new ItemIngot("tin");
-          ingotBronze = new ItemIngot("bronze");
-          ingotMagic = new ItemIngot("magic", true);
-          ingotSteel = new ItemIngot("steel");
+          ingotCopper = (ItemIngot) new ItemIngot("copper").setCreativeTab(tab);
+          ingotTin = (ItemIngot) new ItemIngot("tin").setCreativeTab(tab);
+          ingotBronze = (ItemIngot) new ItemIngot("bronze").setCreativeTab(tab);
+          ingotMagic = (ItemIngot) new ItemIngot("magic", true).setCreativeTab(tab);
+          ingotSteel = (ItemIngot) new ItemIngot("steel").setCreativeTab(tab);
           
-          dustIron = new ItemDust("iron");
-          dustGold = new ItemDust("gold");
-          dustCopper = new ItemDust("copper");
-          dustTin = new ItemDust("tin");
-          dustBronze = new ItemDust("bronze");
-          dustMagic = new ItemDust("magic", true);
+          dustIron = (ItemDust) new ItemDust("iron").setCreativeTab(tab);
+          dustGold = (ItemDust) new ItemDust("gold").setCreativeTab(tab);
+          dustCopper = (ItemDust) new ItemDust("copper").setCreativeTab(tab);
+          dustTin = (ItemDust) new ItemDust("tin").setCreativeTab(tab);
+          dustBronze = (ItemDust) new ItemDust("bronze").setCreativeTab(tab);
+          dustMagic = (ItemDust) new ItemDust("magic", true).setCreativeTab(tab);
           
-          nuggetSteel = (ItemEA) new ItemEA("nugget.steel").setCreativeTab(CreativeTabs.tabMaterials);
+          nuggetSteel = (ItemEA) new ItemEA("nugget.steel").setCreativeTab(tab);
           
-          crusher = new BlockCrusher("crusher");
+          crusher = (BlockCrusher) new BlockCrusher("crusher").setCreativeTab(tab);
           crusherExt = new BlockCrusherExt("crusherExt");
           crusherExtMoving = new BlockCrusherExtMoving("crusherExtMoving");
           
-          hotPlate = new BlockHotPlate("hotPlate");
+          hotPlate = (BlockHotPlate) new BlockHotPlate("hotPlate").setCreativeTab(tab);
           
-          oreCopper = new BlockEAOre("copper");
-          oreTin = new BlockEAOre("tin");
-          blockCopper = new BlockStorage("copper");
-          blockTin = new BlockStorage("tin");
-          blockBronze = new BlockStorage("bronze");
-          blockMagic = new BlockStorage("magic");
+          oreCopper = (BlockEAOre) new BlockEAOre("copper").setCreativeTab(tab);
+          oreTin = (BlockEAOre) new BlockEAOre("tin").setCreativeTab(tab);
+          blockCopper = (BlockDelta) new BlockStorage("copper").setCreativeTab(tab);
+          blockTin = (BlockDelta) new BlockStorage("tin").setCreativeTab(tab);
+          blockBronze = (BlockDelta) new BlockStorage("bronze").setCreativeTab(tab);
+          blockMagic = (BlockDelta) new BlockStorage("magic").setCreativeTab(tab);
           
           MinecraftForge.setBlockHarvestLevel(crusher, "pickaxe", 1);
           MinecraftForge.setBlockHarvestLevel(crusherExt, "pickaxe", 1);
@@ -150,7 +151,25 @@ public class EAContent implements IContent
      @Override
      public void addMaterialBasedContent (final ItemMaterial mat)
      {
-          
+          if (mat == SupportEssentialAlloys.BRONZE || mat == SupportEssentialAlloys.MAGIC || mat == SupportEssentialAlloys.STEEL)
+          {
+               if (mat.needsTools())
+               {
+                    DeltaContent.shovels.get(mat).setCreativeTab(tab);
+                    DeltaContent.pickaxes.get(mat).setCreativeTab(tab);
+                    DeltaContent.axes.get(mat).setCreativeTab(tab);
+                    DeltaContent.swords.get(mat).setCreativeTab(tab);
+                    DeltaContent.hoes.get(mat).setCreativeTab(tab);
+               }
+               
+               if (mat.needsArmor())
+               {
+                    DeltaContent.helmets.get(mat).setCreativeTab(tab);
+                    DeltaContent.chests.get(mat).setCreativeTab(tab);
+                    DeltaContent.pants.get(mat).setCreativeTab(tab);
+                    DeltaContent.boots.get(mat).setCreativeTab(tab);
+               }
+          }
      }
      
      

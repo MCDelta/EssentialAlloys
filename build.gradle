@@ -15,7 +15,7 @@ buildscript {
 apply plugin: "forge"
 
 group = 'mcdelta.essentialalloys'
-version = '0.1a'
+version = '0.1b'
 archivesBaseName = 'EssentialAlloys'
 
 sourceSets {

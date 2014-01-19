@@ -1,3 +1,5 @@
+itemGroup.essentialalloys=EssentialAlloys
+
 item.essentialalloys:ingot.copper.name=Copper Ingot
 item.essentialalloys:ingot.tin.name=Tin Ingot
 item.essentialalloys:ingot.bronze.name=Bronze Ingot

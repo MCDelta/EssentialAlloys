@@ -9,7 +9,6 @@ import mcdelta.core.block.BlockDelta;
 import mcdelta.core.client.CreativeTabDelta;
 import mcdelta.core.enchant.EnchantmentDelta;
 import mcdelta.core.material.ItemMaterial;
-import mcdelta.core.support.SupportEssentialAlloys;
 import mcdelta.essentialalloys.block.BlockCrusher;
 import mcdelta.essentialalloys.block.BlockCrusherExt;
 import mcdelta.essentialalloys.block.BlockCrusherExtMoving;
@@ -151,7 +150,7 @@ public class EAContent implements IContent
      @Override
      public void addMaterialBasedContent (final ItemMaterial mat)
      {
-          if (mat == SupportEssentialAlloys.BRONZE || mat == SupportEssentialAlloys.MAGIC || mat == SupportEssentialAlloys.STEEL)
+          if (mat.name().equals("bronze") || mat.name().equals("magic") || mat.name().equals("steel"))
           {
                if (mat.needsTools())
                {

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import mcdelta.core.IContent;
 import mcdelta.core.block.BlockDelta;
+import mcdelta.core.client.CreativeTabDelta;
 import mcdelta.core.enchant.EnchantmentDelta;
 import mcdelta.core.material.ItemMaterial;
 import mcdelta.essentialalloys.block.BlockCrusher;
@@ -67,12 +68,16 @@ public class EAContent implements IContent
      public static Map<Block, ItemStack> crusherRecipes   = new HashMap<Block, ItemStack>();
      public static Map<Block, ItemStack> explosionRecipes = new HashMap<Block, ItemStack>();
      
+     public static CreativeTabDelta      tab;
+     
      
      
      
      @Override
      public void addContent ()
      {
+          tab = new CreativeTabDelta("essentialalloys");
+          
           ingotCopper = new ItemIngot("copper");
           ingotTin = new ItemIngot("tin");
           ingotBronze = new ItemIngot("bronze");
@@ -135,6 +140,8 @@ public class EAContent implements IContent
           OreDictionary.registerOre("dustGold", EAContent.dustGold);
           
           OreDictionary.registerOre("nuggetSteel", EAContent.nuggetSteel);
+          
+          tab.iconStack = new ItemStack(dustBronze);
      }
      
      

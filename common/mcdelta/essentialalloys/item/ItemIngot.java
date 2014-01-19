@@ -1,6 +1,5 @@
 package mcdelta.essentialalloys.item;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -25,7 +24,6 @@ public class ItemIngot extends ItemEA
           super("ingot." + s);
           
           this.magic = magic;
-          setCreativeTab(CreativeTabs.tabMaterials);
           
           if (magic)
           {

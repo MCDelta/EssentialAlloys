@@ -3,7 +3,6 @@ package mcdelta.essentialalloys.item;
 import java.util.Arrays;
 
 import mcdelta.essentialalloys.EAContent;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -31,7 +30,6 @@ public class ItemDust extends ItemEA
           super("dust." + name);
           
           this.magic = magic;
-          setCreativeTab(CreativeTabs.tabMaterials);
           
           if (magic)
           {
